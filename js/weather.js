@@ -155,24 +155,30 @@
     }).join("");
 
     var rain = ADP.formatNumber(totalRain, 0);
-    els.summary.textContent = goodDays.length
+    var summary = goodDays.length
       ? ADP.t("weather.summary", { rain: rain, days: goodDays.join(", ") })
       : ADP.t("weather.summaryNone", { rain: rain });
+    // Farmers share news with each other on WhatsApp, so make the weekly summary easy to forward.
+    var shareText = placeName + ": " + summary;
+    els.summary.innerHTML = "<span>" + ADP.escapeHTML(summary) +
+      ' <a class="wx-share" href="https://wa.me/?text=' + encodeURIComponent(shareText) + '" target="_blank" rel="noopener">' +
+      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>' +
+      ADP.t("upd.share") + "</a></span>";
 
     renderTarget();
   }
 
   function renderTarget() {
-    var day = ADP.schedule ? ADP.schedule.currentDay() : null;
+    var day = ADP.schedule ? ADP.schedule.currentDay() : ADP.crop.currentDay();
     if (day === null) {
       els.target.textContent = ADP.t("weather.targetNone");
       return;
     }
-    var stage = ADP.t("stage." + ADP.schedule.stageForDay(day)).toLowerCase();
+    var stage = ADP.t("stage." + ADP.crop.stageForDay(day)).toLowerCase();
     els.target.textContent = ADP.t("weather.targetWater", {
       day: Math.max(day, 0),
       stage: stage,
-      depth: ADP.schedule.waterForDay(day)
+      depth: ADP.crop.waterForDay(day)
     });
   }
 

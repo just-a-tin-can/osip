@@ -10,6 +10,19 @@
 
   var STORAGE_KEY = "adp-language"; // saved only when the visitor picks a language
 
+  /* ---------- WhatsApp ----------
+     The number that WhatsApp bookings and questions go to.
+     International format, digits only (no "+" or spaces).
+     To change it, edit this one line. */
+  var WHATSAPP_NUMBER = "601162868669";
+  var WHATSAPP_DISPLAY = "+60 11-6286 8669";
+  var WA_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>';
+
+  // Link that opens a WhatsApp chat with the message already typed in.
+  function waLink(text) {
+    return "https://wa.me/" + WHATSAPP_NUMBER + (text ? "?text=" + encodeURIComponent(text) : "");
+  }
+
   /* ---------- Safe localStorage (can fail in private mode) ---------- */
   var store = {
     get: function (key) {
@@ -155,6 +168,7 @@
       '<nav class="nav" id="main-nav">' +
       link("index.html", "nav.home", "home") +
       link("guide.html", "nav.guide", "guide") +
+      link("updates.html", "nav.updates", "updates") +
       link("booking.html", "nav.booking", "booking").replace("<a ", '<a class="nav__book" ') +
       "</nav>" +
       (page === "booking" ? "" :
@@ -209,15 +223,42 @@
       '<div><h4 data-i18n="footer.links"></h4><ul>' +
       '<li><a href="index.html" data-i18n="nav.home"></a></li>' +
       '<li><a href="guide.html" data-i18n="nav.guide"></a></li>' +
+      '<li><a href="updates.html" data-i18n="nav.updates"></a></li>' +
       '<li><a href="booking.html" data-i18n="nav.booking"></a></li>' +
       "</ul></div>" +
       '<div><h4 data-i18n="footer.contact"></h4><ul>' +
-      '<li data-i18n="footer.phone"></li>' +
+      '<li><a class="footer-wa" href="' + waLink() + '" target="_blank" rel="noopener">' + WA_ICON + '<span>WhatsApp: ' + WHATSAPP_DISPLAY + '</span></a></li>' +
       '<li data-i18n="footer.email"></li>' +
       '<li data-i18n="footer.area"></li>' +
       "</ul></div>" +
       '<p class="fine">&copy; ' + new Date().getFullYear() + ' ADP Sytech. <span data-i18n="footer.fine"></span></p>' +
       "</div>";
+  }
+
+  /* ---------- Crop stage & target water depth (shared by guide + weather) ---------- */
+  function stageForDay(d) {
+    if (d < 0) return "prep";
+    if (d <= 7) return "germ";
+    if (d <= 14) return "estab";
+    if (d <= 24) return "veg";
+    if (d <= 44) return "till";
+    if (d <= 64) return "panicle";
+    if (d <= 79) return "flower";
+    if (d <= 99) return "fill";
+    if (d <= 109) return "ripen";
+    return "harvest";
+  }
+  function waterForDay(d) {
+    if (d <= 7) return t("weather.wsSat");
+    if (d <= 14) return "3–5 cm";
+    if (d <= 40) return "5–7 cm";
+    if (d <= 99) return "5–10 cm";
+    return t("weather.wsDrain");
+  }
+  // Days since the sowing date saved on the Fertiliser Guide page (null if none).
+  function currentCropDay() {
+    var sow = parseISODate(store.get("adp-sow"));
+    return sow ? daysBetween(sow, new Date()) : null;
   }
 
   /* ---------- Public API ---------- */
@@ -235,7 +276,11 @@
     daysBetween: daysBetween,
     toHectares: toHectares,
     escapeHTML: escapeHTML,
-    bookIcon: function () { return BOOK_ICON; }
+    bookIcon: function () { return BOOK_ICON; },
+    crop: { stageForDay: stageForDay, waterForDay: waterForDay, currentDay: currentCropDay },
+    waLink: waLink,
+    waIcon: function () { return WA_ICON; },
+    waNumber: WHATSAPP_DISPLAY
   };
 
   /* ---------- Start ---------- */

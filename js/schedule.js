@@ -42,26 +42,8 @@
   ];
 
   /* ---------- Growth stage & water target by day ---------- */
-  function stageForDay(d) {
-    if (d < 0) return "prep";
-    if (d <= 7) return "germ";
-    if (d <= 14) return "estab";
-    if (d <= 24) return "veg";
-    if (d <= 44) return "till";
-    if (d <= 64) return "panicle";
-    if (d <= 79) return "flower";
-    if (d <= 99) return "fill";
-    if (d <= 109) return "ripen";
-    return "harvest";
-  }
-
-  function waterForDay(d) {
-    if (d < 0 || d <= 7) return ADP.t("weather.wsSat");
-    if (d <= 14) return "3–5 cm";
-    if (d <= 40) return "5–7 cm";
-    if (d <= 99) return "5–10 cm";
-    return ADP.t("weather.wsDrain");
-  }
+  var stageForDay = ADP.crop.stageForDay;
+  var waterForDay = ADP.crop.waterForDay;
 
   /* ---------- State ---------- */
   var els = {};
@@ -306,7 +288,7 @@
     var savedSow = ADP.store.get("adp-sow");
     els.sow.value = savedSow || ADP.toISODate(ADP.addDays(new Date(), -20));
     els.size.value = ADP.store.get("adp-size") || "1";
-    els.unit.value = ADP.store.get("adp-unit") || "ha";
+    els.unit.value = ADP.store.get("adp-unit") || "acre";
 
     [els.sow, els.size, els.unit].forEach(function (el) {
       el.addEventListener("input", function () { saveInputs(); render(); });

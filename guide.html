@@ -37,9 +37,9 @@
             <div class="inline-input">
               <input type="number" id="field-size" min="0" step="0.1" value="1" inputmode="decimal">
               <select id="field-unit" aria-label="Unit">
-                <option value="ha" data-i18n="guide.unit.ha"></option>
-                <option value="relung" data-i18n="guide.unit.relung"></option>
                 <option value="acre" data-i18n="guide.unit.acre"></option>
+                <option value="relung" data-i18n="guide.unit.relung"></option>
+                <option value="ha" data-i18n="guide.unit.ha"></option>
               </select>
             </div>
           </div>
@@ -95,10 +95,6 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/></svg>
           <span data-i18n="guide.pestNote"></span>
         </div>
-        <div class="callout callout--danger">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></svg>
-          <span data-i18n="guide.mixWarn"></span>
-        </div>
         <div class="callout">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
           <span data-i18n="guide.source"></span>
@@ -106,47 +102,16 @@
       </div>
     </section>
 
-    <!-- ============ WEATHER ============ -->
-    <section class="section section--alt" id="weather">
+    <!-- ============ LINK TO LATEST INFO ============ -->
+    <section class="section section--alt" style="padding:40px 0">
       <div class="container">
-        <div class="weather-head">
-          <div class="section__head" style="margin-bottom:0">
-            <span class="eyebrow" data-i18n="weather.eyebrow"></span>
-            <h2 data-i18n="weather.title"></h2>
-            <p data-i18n="weather.lead"></p>
+        <div class="cta-band" style="background:var(--sky-100);border-color:#bfdcef">
+          <div>
+            <h2 data-i18n="guide.moreTitle"></h2>
+            <p data-i18n="guide.moreText"></p>
           </div>
-          <div style="display:flex;gap:10px;align-items:end;flex-wrap:wrap">
-            <div class="field">
-              <label for="wx-location" data-i18n="weather.location"></label>
-              <select id="wx-location"></select>
-            </div>
-            <button type="button" class="btn btn--outline" id="wx-geo" data-i18n="weather.useMine"></button>
-          </div>
+          <a class="btn btn--green" href="updates.html" data-i18n="guide.moreBtn"></a>
         </div>
-
-        <p class="weather-status" id="wx-status" role="status"></p>
-        <div class="callout" id="wx-summary" style="margin:0 0 12px"></div>
-        <div class="callout callout--warn" id="wx-target" style="margin:0 0 20px"></div>
-
-        <div class="forecast" id="wx-forecast"></div>
-
-        <div class="legend">
-          <span><i style="background:var(--green-100);border:1px solid var(--green-500)"></i><span data-i18n="weather.legend.good"></span></span>
-          <span><i style="background:var(--gold-100);border:1px solid var(--gold-500)"></i><span data-i18n="weather.legend.warn"></span></span>
-          <span><i style="background:var(--red-100);border:1px solid var(--red-500)"></i><span data-i18n="weather.legend.bad"></span></span>
-          <span><i style="background:var(--sky-100);border:1px solid var(--sky-500)"></i><span data-i18n="weather.legend.water"></span></span>
-        </div>
-
-        <h3 style="margin-top:44px" data-i18n="weather.waterTitle"></h3>
-        <div class="water-stages">
-          <div class="water-stage"><div class="level"><i style="height:6%"></i></div><strong data-i18n="weather.wsSat"></strong><span data-i18n="weather.ws0"></span></div>
-          <div class="water-stage"><div class="level"><i style="height:35%"></i></div><strong>3–5 cm</strong><span data-i18n="weather.ws1"></span></div>
-          <div class="water-stage"><div class="level"><i style="height:55%"></i></div><strong>5–7 cm</strong><span data-i18n="weather.ws2"></span></div>
-          <div class="water-stage"><div class="level"><i style="height:80%"></i></div><strong>5–10 cm</strong><span data-i18n="weather.ws3"></span></div>
-          <div class="water-stage"><div class="level"><i style="height:0"></i></div><strong data-i18n="weather.wsDrain"></strong><span data-i18n="weather.ws4"></span></div>
-        </div>
-
-        <p class="note" data-i18n="weather.source"></p>
       </div>
     </section>
   </main>
@@ -156,6 +121,5 @@
   <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
   <script src="js/schedule.js"></script>
-  <script src="js/weather.js"></script>
 </body>
 </html>
