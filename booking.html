@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="meta.booking">Book a Drone Service — ADP Sytech</title>
+  <meta name="description" content="Book an ADP Sytech drone fertiliser spreading or pesticide spraying service for your paddy field.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="booking">
+
+  <header id="site-header"></header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow" data-i18n="book.eyebrow"></span>
+        <h1 data-i18n="book.title"></h1>
+        <p data-i18n="book.lead"></p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:36px">
+      <div class="container booking-layout">
+
+        <!-- ============ FORM ============ -->
+        <form class="card form-card" id="booking-form" novalidate>
+          <span class="demo-flag" data-i18n="book.demo"></span>
+
+          <div class="form-grid">
+            <h3 class="form-section-title" data-i18n="book.sec1"></h3>
+
+            <div class="field">
+              <label for="b-name" data-i18n="book.name"></label>
+              <input type="text" id="b-name" name="name" autocomplete="name" data-i18n-ph="book.namePh">
+              <div class="error" data-i18n="book.err.name"></div>
+            </div>
+            <div class="field">
+              <label for="b-phone" data-i18n="book.phone"></label>
+              <input type="tel" id="b-phone" name="phone" autocomplete="tel" inputmode="tel" data-i18n-ph="book.phonePh">
+              <div class="error" data-i18n="book.err.phone"></div>
+            </div>
+            <div class="field">
+              <label for="b-village" data-i18n="book.village"></label>
+              <input type="text" id="b-village" name="village" data-i18n-ph="book.villagePh">
+              <div class="error" data-i18n="book.err.village"></div>
+            </div>
+            <div class="field">
+              <label for="b-district" data-i18n="book.district"></label>
+              <select id="b-district" name="district">
+                <option value="" data-i18n="book.choose"></option>
+                <optgroup label="Selangor">
+                  <option>Sabak Bernam</option>
+                  <option>Kuala Selangor</option>
+                </optgroup>
+                <optgroup label="Kedah">
+                  <option>Kota Setar</option>
+                  <option>Kubang Pasu</option>
+                  <option>Yan</option>
+                </optgroup>
+                <optgroup label="Perak">
+                  <option>Kerian</option>
+                </optgroup>
+                <optgroup label="Pulau Pinang">
+                  <option>Seberang Perai Utara</option>
+                </optgroup>
+                <optgroup label="Kelantan">
+                  <option>Pasir Mas</option>
+                  <option>Kota Bharu</option>
+                </optgroup>
+                <option value="other" data-i18n="book.other"></option>
+              </select>
+              <div class="error" data-i18n="book.err.district"></div>
+            </div>
+
+            <h3 class="form-section-title" data-i18n="book.sec2"></h3>
+
+            <div class="field">
+              <label for="b-size" data-i18n="book.size"></label>
+              <div class="inline-input">
+                <input type="number" id="b-size" name="size" min="0" step="0.1" inputmode="decimal">
+                <select id="b-unit" name="unit" aria-label="Unit">
+                  <option value="ha" data-i18n="guide.unit.ha"></option>
+                  <option value="relung" data-i18n="guide.unit.relung"></option>
+                  <option value="acre" data-i18n="guide.unit.acre"></option>
+                </select>
+              </div>
+              <div class="error" data-i18n="book.err.size"></div>
+            </div>
+            <div class="field">
+              <label for="b-sow"><span data-i18n="book.sowDate"></span> <span class="hint" data-i18n="book.sowHint"></span></label>
+              <input type="date" id="b-sow" name="sow">
+            </div>
+
+            <h3 class="form-section-title" data-i18n="book.sec3"></h3>
+
+            <div class="field full" id="service-field">
+              <div class="choice-group" role="radiogroup">
+                <div class="choice">
+                  <input type="radio" id="svc-fert" name="service" value="fert">
+                  <label for="svc-fert"><span data-i18n="book.svc.fert"></span><small data-i18n="book.svc.fertSub"></small></label>
+                </div>
+                <div class="choice">
+                  <input type="radio" id="svc-pest" name="service" value="pest">
+                  <label for="svc-pest"><span data-i18n="book.svc.pest"></span><small data-i18n="book.svc.pestSub"></small></label>
+                </div>
+                <div class="choice">
+                  <input type="radio" id="svc-both" name="service" value="both">
+                  <label for="svc-both"><span data-i18n="book.svc.both"></span><small data-i18n="book.svc.bothSub"></small></label>
+                </div>
+              </div>
+              <div class="error" data-i18n="book.err.service"></div>
+            </div>
+
+            <div class="field full" id="pestform-field" hidden>
+              <label data-i18n="book.pestForm"></label>
+              <div class="choice-group choice-group--2" role="radiogroup">
+                <div class="choice">
+                  <input type="radio" id="pf-granular" name="pestForm" value="granular">
+                  <label for="pf-granular">
+                    <svg class="choice__icon" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><circle cx="9" cy="20" r="3"/><circle cx="16" cy="24" r="3"/><circle cx="23" cy="20" r="3"/><circle cx="12.5" cy="13" r="2.6"/><circle cx="19.5" cy="13" r="2.6"/><circle cx="16" cy="6.5" r="2.2"/></svg>
+                    <span data-i18n="book.pestForm.granular"></span><small data-i18n="book.pestForm.granularSub"></small>
+                  </label>
+                </div>
+                <div class="choice">
+                  <input type="radio" id="pf-liquid" name="pestForm" value="liquid">
+                  <label for="pf-liquid">
+                    <svg class="choice__icon" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3c-4 6-9 11.5-9 17a9 9 0 0 0 18 0c0-5.5-5-11-9-17z"/></svg>
+                    <span data-i18n="book.pestForm.liquid"></span><small data-i18n="book.pestForm.liquidSub"></small>
+                  </label>
+                </div>
+              </div>
+              <div class="error" data-i18n="book.err.pestForm"></div>
+            </div>
+
+            <div class="field full">
+              <div class="callout" style="margin:0">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+                <span data-i18n="book.ownSupply"></span>
+              </div>
+            </div>
+
+            <h3 class="form-section-title" data-i18n="book.sec4"></h3>
+
+            <div class="field">
+              <label for="b-date" data-i18n="book.date"></label>
+              <input type="date" id="b-date" name="date">
+              <div class="error" data-i18n="book.err.date"></div>
+              <p class="note" style="margin-top:6px"><span data-i18n="book.weatherTip"></span> <a href="guide.html#weather" data-i18n="book.weatherLink"></a></p>
+            </div>
+            <div class="field" id="slot-field">
+              <label data-i18n="book.slot"></label>
+              <div class="slots" id="slots"></div>
+              <p class="note" style="margin-top:6px" data-i18n="book.slotHint"></p>
+              <div class="error" data-i18n="book.err.slot"></div>
+            </div>
+
+            <div class="field full">
+              <label for="b-notes" data-i18n="book.notes"></label>
+              <textarea id="b-notes" name="notes" rows="3" data-i18n-ph="book.notesPh"></textarea>
+            </div>
+
+            <div class="field full" id="consent-field">
+              <label style="display:flex;gap:10px;align-items:flex-start;font-weight:500;cursor:pointer">
+                <input type="checkbox" id="b-consent" style="width:20px;height:20px;margin-top:3px;flex-shrink:0">
+                <span data-i18n="book.consent"></span>
+              </label>
+              <div class="error" data-i18n="book.err.consent"></div>
+            </div>
+
+            <div class="full">
+              <button type="submit" class="btn btn--primary btn--block btn--lg btn--glow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M9 15l2 2 4-4"/></svg><span data-i18n="book.submit"></span></button>
+            </div>
+          </div>
+        </form>
+
+        <!-- ============ SIDEBAR ============ -->
+        <aside class="booking-aside">
+          <div class="card summary-card">
+            <h3 data-i18n="book.sumTitle"></h3>
+            <ul class="summary-list" id="summary"></ul>
+          </div>
+          <div class="card">
+            <h3 data-i18n="book.myTitle"></h3>
+            <div class="bookings-list" id="my-bookings"></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ CONFIRMATION ============ -->
+  <div class="modal" id="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+    <div class="modal__box">
+      <div class="modal__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>
+      </div>
+      <h2 id="confirm-title" data-i18n="book.okTitle"></h2>
+      <p data-i18n="book.okText" style="margin-bottom:0"></p>
+      <div class="ref-big" id="confirm-ref"></div>
+      <ul class="summary-list" id="confirm-summary"></ul>
+      <p class="note" data-i18n="book.okNote"></p>
+      <button type="button" class="btn btn--green btn--block" id="confirm-close" data-i18n="book.okClose"></button>
+    </div>
+  </div>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/booking.js"></script>
+</body>
+</html>
