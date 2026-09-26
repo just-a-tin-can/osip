@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1f5a33">
+  <title data-i18n="meta.weather">SawahKu</title>
+  <meta name="description" content="SawahKu: weather, AI assistant, pest and disease info and a community for paddy farmers, in Malay and English.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="weather">
+
+  <header id="site-header"></header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1 data-i18n="wx.title"></h1>
+        <p data-i18n="wx.lead"></p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="weather-head">
+          <div class="field">
+            <label for="wx-location" data-i18n="wx.location"></label>
+            <select id="wx-location"></select>
+          </div>
+          <button type="button" class="btn btn--outline" id="wx-geo" data-i18n="wx.useMine"></button>
+        </div>
+        <p class="weather-status" id="wx-status" role="status"></p>
+        <div class="callout" id="wx-summary" style="margin:0 0 16px"></div>
+
+        <div class="forecast" id="wx-forecast"></div>
+
+        <div class="legend">
+          <span><i style="background:var(--green-100);border:1px solid var(--green-500)"></i><span data-i18n="wx.legendGood"></span></span>
+          <span><i style="background:var(--gold-100);border:1px solid var(--gold-500)"></i><span data-i18n="wx.legendWarn"></span></span>
+          <span><i style="background:var(--red-100);border:1px solid var(--red-500)"></i><span data-i18n="wx.legendBad"></span></span>
+          <span><i style="background:var(--sky-100);border:1px solid var(--sky-500)"></i><span data-i18n="wx.legendWater"></span></span>
+        </div>
+
+        <h2 style="margin-top:36px;font-size:1.3rem" data-i18n="wx.waterTitle"></h2>
+        <div class="water-stages">
+          <div class="water-stage"><div class="level"><i style="height:6%"></i></div><strong data-i18n="wx.wsSat"></strong><span data-i18n="wx.ws0"></span></div>
+          <div class="water-stage"><div class="level"><i style="height:35%"></i></div><strong>3–5 cm</strong><span data-i18n="wx.ws1"></span></div>
+          <div class="water-stage"><div class="level"><i style="height:55%"></i></div><strong>5–7 cm</strong><span data-i18n="wx.ws2"></span></div>
+          <div class="water-stage"><div class="level"><i style="height:80%"></i></div><strong>5–10 cm</strong><span data-i18n="wx.ws3"></span></div>
+          <div class="water-stage"><div class="level"><i style="height:0"></i></div><strong data-i18n="wx.wsDrain"></strong><span data-i18n="wx.ws4"></span></div>
+        </div>
+        <div class="callout official-links"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/></svg>
+          <span><b data-i18n="wx.official"></b> <a href="https://www.met.gov.my" target="_blank" rel="noopener">MetMalaysia</a> · <a href="https://www.met.gov.my/info/mycuaca/" target="_blank" rel="noopener">myCuaca</a> · <a href="https://publicinfobanjir.water.gov.my" target="_blank" rel="noopener">Public InfoBanjir</a> · <a href="https://makgeopadi.mysa.gov.my/IBL/jdl.html" target="_blank" rel="noopener">IADA BLS</a></span></div>
+        <p class="note" data-i18n="wx.source"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/weather.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1f5a33">
+  <title data-i18n="meta.learn">SawahKu</title>
+  <meta name="description" content="SawahKu: weather, AI assistant, pest and disease info and a community for paddy farmers, in Malay and English.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="learn">
+
+  <header id="site-header"></header>
+
+  <main id="learn-app">
+    <section class="page-hero" id="lb-hero">
+      <div class="container">
+        <h1 data-i18n="learn.title"></h1>
+        <p data-i18n="learn.lead"></p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:22px">
+      <div class="container">
+        <div id="lb-list">
+          <div id="lb-continue" hidden></div>
+          <div class="books" id="lb-books"></div>
+          <p class="note" data-i18n="learn.note" style="margin-top:20px"></p>
+        </div>
+        <div class="reader" id="lb-reader" hidden></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="print-book" id="lb-print"></div>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/ebooks.js"></script>
+  <script src="js/learn.js"></script>
+</body>
+</html>

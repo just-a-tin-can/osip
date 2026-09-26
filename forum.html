@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1f5a33">
+  <title data-i18n="meta.forum">SawahKu</title>
+  <meta name="description" content="SawahKu: weather, AI assistant, pest and disease info and a community for paddy farmers, in Malay and English.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="forum">
+
+  <header id="site-header"></header>
+
+  <main id="forum-app">
+    <section class="page-hero">
+      <div class="container">
+        <h1 data-i18n="forum.title"></h1>
+        <p data-i18n="forum.lead"></p>
+      </div>
+    </section>
+
+    <div class="container" style="padding-top:20px">
+
+      <!-- List of posts -->
+      <div id="f-list">
+        <a class="btn btn--primary btn--block" href="#new" style="margin-bottom:16px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span data-i18n="forum.new"></span></a>
+        <div class="forum-bar">
+          <div class="seg" id="f-sort" role="group">
+            <button type="button" data-sort="hot" aria-pressed="true" data-i18n="forum.sortHot"></button>
+            <button type="button" data-sort="new" aria-pressed="false" data-i18n="forum.sortNew"></button>
+          </div>
+        </div>
+        <div class="search" style="margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" type="search" id="f-search" data-i18n-ph="forum.searchPh" aria-label="Cari"></div>
+        <div class="chips" id="f-cats"></div>
+        <p class="note"><span class="demo-flag" data-i18n="forum.demo"></span></p>
+        <div class="posts" id="f-posts"></div>
+      </div>
+
+      <!-- One post -->
+      <div id="f-detail" hidden>
+        <a class="back-link" href="#"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span data-i18n="common.back"></span></a>
+        <div id="f-detailBody"></div>
+        <form class="card" id="f-replyForm" style="margin-top:16px">
+          <input type="hidden" id="f-replyPost">
+          <div class="field">
+            <label for="f-replyText" data-i18n="forum.reply"></label>
+            <textarea id="f-replyText" rows="3" data-i18n-ph="forum.replyPh"></textarea>
+          </div>
+          <div class="field" style="margin-top:12px">
+            <label for="f-replyName"><span data-i18n="forum.fName"></span> <span class="hint" data-i18n="forum.optional"></span></label>
+            <input type="text" id="f-replyName" data-i18n-ph="forum.fNamePh" autocomplete="name">
+          </div>
+          <button type="submit" class="btn btn--green btn--block" style="margin-top:14px" data-i18n="forum.send"></button>
+        </form>
+      </div>
+
+      <!-- New post -->
+      <div id="f-form" hidden>
+        <a class="back-link" href="#"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span data-i18n="common.back"></span></a>
+        <form class="card" id="f-formEl" novalidate>
+          <h2 data-i18n="forum.newTitle"></h2>
+          <div class="field">
+            <label for="f-fTitle" data-i18n="forum.fTitle"></label>
+            <input type="text" id="f-fTitle" data-i18n-ph="forum.fTitlePh" maxlength="150">
+            <div class="error" data-i18n="forum.errTitle"></div>
+          </div>
+          <div class="field" style="margin-top:14px">
+            <label for="f-fBody"><span data-i18n="forum.fBody"></span> <span class="hint" data-i18n="forum.optional"></span></label>
+            <textarea id="f-fBody" rows="4" data-i18n-ph="forum.fBodyPh"></textarea>
+          </div>
+          <div class="field" style="margin-top:14px">
+            <label data-i18n="forum.fCat"></label>
+            <div class="cat-tiles" id="f-catTiles"></div>
+          </div>
+          <div class="field" style="margin-top:14px">
+            <label for="f-photo"><span data-i18n="forum.fPhoto"></span> <span class="hint" data-i18n="forum.optional"></span></label>
+            <label class="btn btn--outline" style="cursor:pointer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><span data-i18n="forum.fPhoto"></span>
+              <input type="file" id="f-photo" accept="image/*" class="visually-hidden"></label>
+            <div id="f-previewWrap" hidden>
+              <img id="f-preview" class="photo-preview" alt="">
+              <button type="button" class="link-btn" id="f-removePhoto" data-i18n="forum.removePhoto"></button>
+            </div>
+          </div>
+          <div class="field" style="margin-top:14px">
+            <label for="f-fName"><span data-i18n="forum.fName"></span> <span class="hint" data-i18n="forum.optional"></span></label>
+            <input type="text" id="f-fName" data-i18n-ph="forum.fNamePh" autocomplete="name">
+          </div>
+          <button type="submit" class="btn btn--primary btn--block" style="margin-top:18px" data-i18n="forum.fPost"></button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/forum.js"></script>
+</body>
+</html>

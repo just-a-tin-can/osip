@@ -1,5 +1,5 @@
 /* ============================================================
-   ADP Sytech — agricultural news for the "Info Semasa" page
+   SawahKu — farming news shown on the home page
    ------------------------------------------------------------
    HOW TO ADD NEWS: copy one item below, paste it at the TOP of
    the list, and change the date, source, link and the two
@@ -71,33 +71,24 @@ var NEWS = [
 (function () {
   "use strict";
 
-  var WA_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>';
-
-  function waLink(text) {
-    return "https://wa.me/?text=" + encodeURIComponent(text);
-  }
-
   function render() {
     var list = document.getElementById("news-list");
     if (!list) return;
-    var lang = ADP.getLang();
-
-    list.innerHTML = NEWS.map(function (n) {
+    var lang = APP.getLang();
+    var limit = Number(list.getAttribute("data-limit")) || NEWS.length;
+    list.innerHTML = NEWS.slice(0, limit).map(function (n) {
       var c = n[lang] || n.en;
-      var date = ADP.formatDate(ADP.parseISODate(n.date), { day: "numeric", month: "long", year: "numeric" });
+      var date = APP.formatDate(APP.parseISODate(n.date), { day: "numeric", month: "short", year: "numeric" });
       return '<article class="card news">' +
-        '<div class="news__meta"><span class="tag ' + (n.tag === "subsidy" ? "tag--fert" : "tag--water") + '">' + ADP.t("news.tag." + n.tag) + "</span>" +
-        "<span>" + date + " · " + ADP.escapeHTML(n.source) + "</span></div>" +
-        "<h3>" + ADP.escapeHTML(c.title) + "</h3>" +
-        "<p>" + ADP.escapeHTML(c.text) + "</p>" +
+        '<div class="news__meta"><span class="tag ' + (n.tag === "subsidy" ? "tag--green" : "tag--sky") + '">' + APP.t("news.tag." + n.tag) + "</span>" +
+        "<span>" + date + " · " + APP.escapeHTML(n.source) + "</span></div>" +
+        "<h3>" + APP.escapeHTML(c.title) + "</h3>" +
+        "<p>" + APP.escapeHTML(c.text) + "</p>" +
         '<div class="news__actions">' +
-        '<a href="' + n.url + '" target="_blank" rel="noopener">' + ADP.t("news.read") + " →</a>" +
-        '<a class="wa" href="' + waLink(c.title + "\n" + n.url) + '" target="_blank" rel="noopener">' + WA_ICON + ADP.t("upd.share") + "</a>" +
+        '<a href="' + n.url + '" target="_blank" rel="noopener">' + APP.t("news.read") + " →</a>" +
+        '<a class="wa-link" href="' + APP.waShare(c.title + "\n" + n.url) + '" target="_blank" rel="noopener">' + APP.icons.whatsapp + APP.t("common.shareWa") + "</a>" +
         "</div></article>";
     }).join("");
-
-    var updated = document.getElementById("news-updated");
-    if (updated) updated.textContent = ADP.t("news.updated", { date: ADP.formatDate(ADP.parseISODate(NEWS_UPDATED), { day: "numeric", month: "long", year: "numeric" }) });
   }
 
   document.addEventListener("DOMContentLoaded", render);

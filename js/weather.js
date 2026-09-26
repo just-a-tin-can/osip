@@ -1,29 +1,30 @@
 /* ============================================================
-   ADP Sytech — 7-day weather planner
-   Live data from Open-Meteo (free, no API key). If the request
-   fails (e.g. no internet), sample data is shown instead.
+   SawahKu — weather
+   Live 7-day forecast from Open-Meteo (free, no key). If it can't
+   load (e.g. no internet), sample data is shown instead.
+   - weather.html: full 7-day planner (#wx-forecast)
+   - index.html:   small "today" card (#wx-mini)
    ============================================================ */
 
 (function () {
   "use strict";
 
   var LOCATIONS = [
+    { id: "sgbesar", name: "Sungai Besar, Selangor", lat: 3.6743, lon: 100.9868 },
     { id: "sekinchan", name: "Sekinchan, Selangor", lat: 3.5058, lon: 101.1044 },
     { id: "tjkarang", name: "Tanjong Karang, Selangor", lat: 3.4236, lon: 101.1864 },
-    { id: "sgbesar", name: "Sungai Besar, Selangor", lat: 3.6743, lon: 100.9868 },
     { id: "shahalam", name: "Shah Alam, Selangor", lat: 3.0733, lon: 101.5185 },
-    { id: "alorsetar", name: "Alor Setar, Kedah (MADA)", lat: 6.121, lon: 100.3678 },
+    { id: "alorsetar", name: "Alor Setar, Kedah", lat: 6.121, lon: 100.3678 },
     { id: "kerian", name: "Kerian, Perak", lat: 5.0333, lon: 100.4833 },
-    { id: "kotabharu", name: "Kota Bharu, Kelantan (KADA)", lat: 6.1254, lon: 102.2381 }
+    { id: "kotabharu", name: "Kota Bharu, Kelantan", lat: 6.1254, lon: 102.2381 }
   ];
-
-  var DRONE_MAX_WIND = 6; // m/s — DJI Agras T20P limit
+  var PLACE_KEY = "sk-wx-place";
 
   var els = {};
-  var current = null;     // { place, days: [...], live: bool }
-  var myPlace = null;     // set when "Use my location" succeeds
+  var current = null;   // { place, days, live }
+  var myPlace = null;
 
-  /* ---------- Icons ---------- */
+  /* ---------- Weather icons ---------- */
   var ICONS = {
     clear: '<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="9" fill="#f6c14b"/><g stroke="#f6c14b" stroke-width="3" stroke-linecap="round"><path d="M24 5v5M24 38v5M5 24h5M38 24h5M10.5 10.5l3.5 3.5M34 34l3.5 3.5M10.5 37.5l3.5-3.5M34 14l3.5-3.5"/></g></svg>',
     partly: '<svg viewBox="0 0 48 48"><circle cx="18" cy="18" r="8" fill="#f6c14b"/><path d="M16 38h20a8 8 0 0 0 0-16 11 11 0 0 0-20 3 6.5 6.5 0 0 0 0 13z" fill="#dfe6ea" stroke="#b9c4ca" stroke-width="1.5"/></svg>',
@@ -35,7 +36,6 @@
   };
   ICONS.showers = ICONS.rain;
 
-  // WMO weather code → our condition key
   function condition(code) {
     if (code === 0) return "clear";
     if (code <= 2) return "partly";
@@ -49,34 +49,32 @@
   }
 
   /* ---------- Advice rules ---------- */
-  function droneAdvice(day) {
-    if (day.wind > DRONE_MAX_WIND || day.rain >= 5 || day.prob >= 70 || day.cond === "storm") return "bad";
-    if (day.wind > 4 || day.rain >= 1 || day.prob >= 40) return "caution";
+  // Spraying pesticide or fertiliser: rain washes it off, wind blows it away.
+  function sprayAdvice(d) {
+    if (d.wind > 6 || d.rain >= 5 || d.prob >= 70 || d.cond === "storm") return "bad";
+    if (d.wind > 4 || d.rain >= 1 || d.prob >= 40) return "caution";
     return "good";
   }
-
-  function waterAdvice(day) {
-    if (day.rain >= 20) return "heavy";
-    if (day.rain >= 5) return "rain";
-    if (day.tmax >= 33) return "hot";
+  function waterAdvice(d) {
+    if (d.rain >= 20) return "heavy";
+    if (d.rain >= 5) return "rain";
+    if (d.tmax >= 33) return "hot";
     return "keep";
   }
 
-  /* ---------- Data loading ---------- */
+  /* ---------- Data ---------- */
   function fetchForecast(place) {
-    var url = "https://api.open-meteo.com/v1/forecast" +
-      "?latitude=" + place.lat + "&longitude=" + place.lon +
+    var url = "https://api.open-meteo.com/v1/forecast?latitude=" + place.lat + "&longitude=" + place.lon +
       "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,wind_speed_10m_max" +
       "&wind_speed_unit=ms&timezone=Asia%2FKuala_Lumpur&forecast_days=7";
-
-    return fetch(url).then(function (res) {
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      return res.json();
-    }).then(function (json) {
-      var d = json.daily;
+    return fetch(url).then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    }).then(function (j) {
+      var d = j.daily;
       return d.time.map(function (iso, i) {
         return {
-          date: ADP.parseISODate(iso),
+          date: APP.parseISODate(iso),
           cond: condition(d.weather_code[i]),
           tmax: Math.round(d.temperature_2m_max[i]),
           tmin: Math.round(d.temperature_2m_min[i]),
@@ -88,9 +86,8 @@
     });
   }
 
-  // Believable sample week for offline demos.
   function sampleForecast() {
-    var sample = [
+    var s = [
       { cond: "partly", tmax: 32, tmin: 24, rain: 0.4, prob: 20, wind: 3.1 },
       { cond: "clear", tmax: 33, tmin: 24, rain: 0, prob: 10, wind: 2.6 },
       { cond: "showers", tmax: 31, tmin: 24, rain: 8.2, prob: 65, wind: 4.4 },
@@ -99,17 +96,21 @@
       { cond: "partly", tmax: 32, tmin: 24, rain: 1.2, prob: 35, wind: 3.4 },
       { cond: "clear", tmax: 34, tmin: 25, rain: 0, prob: 5, wind: 2.2 }
     ];
-    var today = new Date();
-    return sample.map(function (s, i) {
-      var copy = Object.assign({}, s);
-      copy.date = ADP.addDays(today, i);
-      return copy;
-    });
+    return s.map(function (x, i) { var c = Object.assign({}, x); c.date = APP.addDays(new Date(), i); return c; });
+  }
+
+  // "wx.rain" is the rainfall text, so the "Rain" condition uses its own key.
+  function condLabel(c) { return APP.t(c === "rain" ? "wx.rain.cond" : "wx." + c); }
+
+  function placeName(p) { return p.id === "mine" ? APP.t("wx.myLocation") : p.name; }
+
+  function savedPlace() {
+    var id = APP.store.get(PLACE_KEY);
+    return LOCATIONS.filter(function (l) { return l.id === id; })[0] || LOCATIONS[0];
   }
 
   function load(place) {
-    els.status.classList.remove("is-error");
-    els.status.textContent = ADP.t("weather.loading");
+    if (els.status) { els.status.classList.remove("is-error"); els.status.textContent = APP.t("wx.loading"); }
     fetchForecast(place)
       .then(function (days) { current = { place: place, days: days, live: true }; render(); })
       .catch(function () { current = { place: place, days: sampleForecast(), live: false }; render(); });
@@ -118,117 +119,101 @@
   /* ---------- Rendering ---------- */
   function render() {
     if (!current) return;
-    var place = current.place;
-    var placeName = place.id === "mine" ? ADP.t("weather.myLocation") : place.name;
-
-    if (current.live) {
-      els.status.classList.remove("is-error");
-      els.status.textContent = ADP.t("weather.updated", { place: placeName });
-    } else {
-      els.status.classList.add("is-error");
-      els.status.textContent = ADP.t("weather.offline");
-    }
-
-    var totalRain = 0;
-    var goodDays = [];
-
-    els.forecast.innerHTML = current.days.map(function (d, i) {
-      totalRain += d.rain;
-      var drone = droneAdvice(d);
-      var water = waterAdvice(d);
-      var dayName = i === 0 ? ADP.t("weather.today") : ADP.formatDate(d.date, { weekday: "long" });
-      if (drone === "good") goodDays.push(i === 0 ? ADP.t("weather.today").toLowerCase() : ADP.formatDate(d.date, { weekday: "long" }));
-
-      var dronePill = { good: "pill--good", caution: "pill--warn", bad: "pill--bad" }[drone];
-      return '<article class="day' + (i === 0 ? " is-today" : "") + '">' +
-        '<div class="day__name">' + dayName + "</div>" +
-        '<div class="day__date">' + ADP.formatDate(d.date, { day: "numeric", month: "short" }) + "</div>" +
-        '<div class="day__icon" role="img" aria-label="' + ADP.t("wx." + d.cond) + '">' + ICONS[d.cond] + "</div>" +
-        '<div class="day__temp">' + d.tmax + "° <small>/ " + d.tmin + "°C</small></div>" +
-        '<div class="day__meta"><span>' + ADP.t("wx." + d.cond) + "</span>" +
-        "<span>" + ADP.t("weather.rain", { mm: ADP.formatNumber(d.rain), p: d.prob }) + "</span>" +
-        "<span>" + ADP.t("weather.wind", { w: ADP.formatNumber(d.wind) }) + "</span></div>" +
-        '<div class="day__advice">' +
-        '<span class="pill ' + dronePill + '">' + ADP.t("weather.drone." + drone) + "</span>" +
-        '<span class="pill pill--info">' + ADP.t("weather.water." + water) + "</span>" +
-        "</div></article>";
-    }).join("");
-
-    var rain = ADP.formatNumber(totalRain, 0);
-    var summary = goodDays.length
-      ? ADP.t("weather.summary", { rain: rain, days: goodDays.join(", ") })
-      : ADP.t("weather.summaryNone", { rain: rain });
-    // Farmers share news with each other on WhatsApp, so make the weekly summary easy to forward.
-    var shareText = placeName + ": " + summary;
-    els.summary.innerHTML = "<span>" + ADP.escapeHTML(summary) +
-      ' <a class="wx-share" href="https://wa.me/?text=' + encodeURIComponent(shareText) + '" target="_blank" rel="noopener">' +
-      '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>' +
-      ADP.t("upd.share") + "</a></span>";
-
-    renderTarget();
+    if (els.forecast) renderFull();
+    if (els.mini) renderMini();
   }
 
-  function renderTarget() {
-    var day = ADP.schedule ? ADP.schedule.currentDay() : ADP.crop.currentDay();
-    if (day === null) {
-      els.target.textContent = ADP.t("weather.targetNone");
-      return;
+  function pill(kind, key) {
+    var cls = { good: "pill--good", caution: "pill--warn", bad: "pill--bad" }[kind] || "pill--info";
+    return '<span class="pill ' + cls + '">' + APP.t(key) + "</span>";
+  }
+
+  function renderMini() {
+    var d = current.days[0];
+    els.mini.innerHTML =
+      '<div class="today__icon" role="img" aria-label="' + condLabel(d.cond) + '">' + ICONS[d.cond] + "</div>" +
+      '<div><div class="today__temp">' + d.tmax + "°C</div>" +
+      "<div>" + condLabel(d.cond) + " · " + APP.t("wx.rain", { mm: APP.formatNumber(d.rain), p: d.prob }) + "</div>" +
+      '<div class="today__place">' + APP.escapeHTML(placeName(current.place)) + (current.live ? "" : " · " + APP.t("wx.sampleShort")) + "</div></div>" +
+      '<div class="today__advice">' + pill(sprayAdvice(d), "wx.spray." + sprayAdvice(d)) + pill("info", "wx.water." + waterAdvice(d)) + "</div>";
+  }
+
+  function renderFull() {
+    var place = current.place;
+    if (current.live) {
+      els.status.classList.remove("is-error");
+      els.status.textContent = APP.t("wx.updated", { place: placeName(place) });
+    } else {
+      els.status.classList.add("is-error");
+      els.status.textContent = APP.t("wx.offline");
     }
-    var stage = ADP.t("stage." + ADP.crop.stageForDay(day)).toLowerCase();
-    els.target.textContent = ADP.t("weather.targetWater", {
-      day: Math.max(day, 0),
-      stage: stage,
-      depth: ADP.crop.waterForDay(day)
-    });
+
+    var totalRain = 0, goodDays = [];
+    els.forecast.innerHTML = current.days.map(function (d, i) {
+      totalRain += d.rain;
+      var spray = sprayAdvice(d), water = waterAdvice(d);
+      var name = i === 0 ? APP.t("wx.today") : APP.formatDate(d.date, { weekday: "long" });
+      if (spray === "good") goodDays.push(i === 0 ? APP.t("wx.today").toLowerCase() : name);
+      return '<article class="day' + (i === 0 ? " is-today" : "") + '">' +
+        '<div class="day__name">' + name + "</div>" +
+        '<div class="day__date">' + APP.formatDate(d.date, { day: "numeric", month: "short" }) + "</div>" +
+        '<div class="day__icon" role="img" aria-label="' + condLabel(d.cond) + '">' + ICONS[d.cond] + "</div>" +
+        '<div class="day__temp">' + d.tmax + "° <small>/ " + d.tmin + "°C</small></div>" +
+        '<div class="day__meta"><span>' + condLabel(d.cond) + "</span>" +
+        "<span>" + APP.t("wx.rain", { mm: APP.formatNumber(d.rain), p: d.prob }) + "</span>" +
+        "<span>" + APP.t("wx.wind", { w: APP.formatNumber(d.wind) }) + "</span></div>" +
+        '<div class="day__advice">' + pill(spray, "wx.spray." + spray) + pill("info", "wx.water." + water) + "</div></article>";
+    }).join("");
+
+    var rain = APP.formatNumber(totalRain, 0);
+    var summary = goodDays.length
+      ? APP.t("wx.summary", { rain: rain, days: goodDays.join(", ") })
+      : APP.t("wx.summaryNone", { rain: rain });
+    els.summary.innerHTML = "<span>" + APP.escapeHTML(summary) +
+      ' <a class="wx-share" href="' + APP.waShare(placeName(place) + ": " + summary) + '" target="_blank" rel="noopener">' +
+      APP.icons.whatsapp + APP.t("common.shareWa") + "</a></span>";
   }
 
   function fillLocations() {
-    var saved = ADP.store.get("adp-wx");
     els.select.innerHTML = LOCATIONS.map(function (l) {
-      return '<option value="' + l.id + '">' + ADP.escapeHTML(l.name) + "</option>";
-    }).join("") + (myPlace ? '<option value="mine">' + ADP.t("weather.myLocation") + "</option>" : "");
-    if (myPlace && current && current.place.id === "mine") els.select.value = "mine";
-    else if (saved && LOCATIONS.some(function (l) { return l.id === saved; })) els.select.value = saved;
-  }
-
-  function selectedPlace() {
-    if (els.select.value === "mine" && myPlace) return myPlace;
-    return LOCATIONS.filter(function (l) { return l.id === els.select.value; })[0] || LOCATIONS[0];
+      return '<option value="' + l.id + '">' + APP.escapeHTML(l.name) + "</option>";
+    }).join("") + (myPlace ? '<option value="mine">' + APP.t("wx.myLocation") + "</option>" : "");
+    els.select.value = current && current.place.id === "mine" ? "mine" : savedPlace().id;
   }
 
   /* ---------- Start ---------- */
   document.addEventListener("DOMContentLoaded", function () {
-    els.select = document.getElementById("wx-location");
+    els.forecast = document.getElementById("wx-forecast");
+    els.mini = document.getElementById("wx-mini");
     els.status = document.getElementById("wx-status");
     els.summary = document.getElementById("wx-summary");
-    els.target = document.getElementById("wx-target");
-    els.forecast = document.getElementById("wx-forecast");
+    els.select = document.getElementById("wx-location");
+    if (!els.forecast && !els.mini) return;
 
-    fillLocations();
+    if (els.select) {
+      fillLocations();
+      els.select.addEventListener("change", function () {
+        if (els.select.value !== "mine") APP.store.set(PLACE_KEY, els.select.value);
+        load(els.select.value === "mine" && myPlace ? myPlace : savedPlace());
+      });
+    }
 
-    els.select.addEventListener("change", function () {
-      if (els.select.value !== "mine") ADP.store.set("adp-wx", els.select.value);
-      load(selectedPlace());
-    });
-
-    document.getElementById("wx-geo").addEventListener("click", function () {
-      if (!navigator.geolocation) { els.status.textContent = ADP.t("weather.geoFail"); return; }
-      els.status.textContent = ADP.t("weather.loading");
+    var geo = document.getElementById("wx-geo");
+    if (geo) geo.addEventListener("click", function () {
+      if (!navigator.geolocation) { els.status.textContent = APP.t("wx.geoFail"); return; }
+      els.status.textContent = APP.t("wx.loading");
       navigator.geolocation.getCurrentPosition(function (pos) {
         myPlace = { id: "mine", name: "", lat: pos.coords.latitude.toFixed(3), lon: pos.coords.longitude.toFixed(3) };
         current = { place: myPlace, days: [], live: true };
         fillLocations();
-        els.select.value = "mine";
         load(myPlace);
       }, function () {
         els.status.classList.add("is-error");
-        els.status.textContent = ADP.t("weather.geoFail");
+        els.status.textContent = APP.t("wx.geoFail");
       }, { timeout: 10000 });
     });
 
-    document.addEventListener("langchange", function () { fillLocations(); render(); });
-    document.addEventListener("schedulechange", renderTarget);
-
-    load(selectedPlace());
+    document.addEventListener("langchange", function () { if (els.select) fillLocations(); render(); });
+    load(savedPlace());
   });
 })();

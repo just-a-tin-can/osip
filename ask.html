@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1f5a33">
+  <title data-i18n="meta.ask">SawahKu</title>
+  <meta name="description" content="SawahKu: weather, AI assistant, pest and disease info and a community for paddy farmers, in Malay and English.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="ask">
+
+  <header id="site-header"></header>
+
+  <main>
+    <div class="container">
+      <div class="chat">
+        <div style="padding-top:14px">
+          <h1 style="font-size:1.5rem;margin-bottom:4px" data-i18n="ask.title"></h1>
+          <span class="demo-flag" data-i18n="ask.demo"></span>
+          <a class="ask-why" href="info.html#why" data-i18n="ask.why"></a>
+        </div>
+        <div class="chat__log" id="chat-log" aria-live="polite"></div>
+        <div class="chat__quick" id="chat-quick"></div>
+        <p class="chat__listening" id="chat-status" role="status"></p>
+        <form class="chat__composer" id="chat-form">
+          <button type="button" class="icon-btn icon-btn--mic" id="chat-mic" data-i18n-aria="ask.mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+          <textarea class="input" id="chat-input" rows="1" data-i18n-ph="ask.ph" aria-label="Soalan"></textarea>
+          <button type="submit" class="icon-btn icon-btn--send" data-i18n-aria="ask.send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cropdata.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>
