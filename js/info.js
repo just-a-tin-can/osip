@@ -103,17 +103,19 @@
   var FAQ = [
     { id: "why",
       ms: ["Kenapa guna SawahKu, bukan ChatGPT atau chatbot AI lain?",
-        "<p>Chatbot umum pandai menjawab soalan umum. SawahKu dibuat khas untuk <b>sawah padi anda</b>:</p><ul>" +
-        "<li><b>Nasihat tempatan.</b> Perosak, penyakit dan jadual baja ikut panduan Jabatan Pertanian dan MARDI — bukan nasihat dari negara lain, sukatan asing atau racun yang tiada di Malaysia.</li>" +
-        "<li><b>Jawapan yang disemak.</b> Chatbot umum kadang-kadang memberi jawapan yang kedengaran yakin tetapi salah. Jawapan SawahKu datang daripada panduan yang disemak, dan setiap satunya menunjukkan ke mana untuk mendapatkan maklumat rasmi.</li>" +
+        "<p>Tanya AI dalam SawahKu menggunakan AI moden seperti Gemini, Claude atau ChatGPT — tetapi ia dibuat khas untuk <b>sawah padi anda</b>:</p><ul>" +
+        "<li><b>Nasihat tempatan.</b> Setiap kali menjawab, AI diberi panduan Rice Check 2022 Jabatan Pertanian, bahan aktif yang disyorkan dan senarai racun yang diharamkan — jadi ia tidak mencadangkan racun haram atau produk dari negara lain.</li>" +
+        "<li><b>Jujur bila tidak pasti.</b> Chatbot umum kadang-kadang memberi jawapan yang kedengaran yakin tetapi salah. SawahKu diarah untuk mengaku bila tidak pasti dan menunjukkan pegawai atau laman rasmi yang betul.</li>" +
+        "<li><b>Imbas gambar.</b> Ambil gambar daun atau serangga, dan AI membandingkannya dengan perosak dan penyakit padi tempatan.</li>" +
         "<li><b>Tahu kawasan anda.</b> Cuaca 7 hari untuk kawasan sawah anda, dengan nasihat sama ada sesuai menyembur dan berapa paras air.</li>" +
         "<li><b>Pesawah sebenar.</b> Di Komuniti, anda bertanya kepada pesawah sekitar yang tahu keadaan sebenar — sesuatu yang AI tidak tahu.</li>" +
         "<li><b>Semua di satu tempat.</b> Cuaca, kenal perosak, e-buku, komuniti dan laman rasmi kerajaan.</li>" +
         "<li><b>Mudah untuk semua.</b> Bahasa Melayu, huruf besar, boleh bercakap dan mendengar. Percuma, tiada akaun.</li></ul>"],
       en: ["Why use SawahKu instead of ChatGPT or another AI chatbot?",
-        "<p>General chatbots are good at general questions. SawahKu is made for <b>your paddy field</b>:</p><ul>" +
-        "<li><b>Local advice.</b> Pests, diseases and the fertiliser schedule follow Department of Agriculture and MARDI guidance — not advice from other countries, foreign units, or products not sold in Malaysia.</li>" +
-        "<li><b>Checked answers.</b> General chatbots sometimes give answers that sound confident but are wrong. SawahKu's answers come from checked guides, and each one points you to where the official information is.</li>" +
+        "<p>Ask AI in SawahKu uses modern AI such as Gemini, Claude or ChatGPT — but it is made for <b>your paddy field</b>:</p><ul>" +
+        "<li><b>Local advice.</b> With every answer, the AI is given the Department of Agriculture's Rice Check 2022 guide, the recommended active ingredients and the banned-pesticide list — so it won't suggest illegal pesticides or products from other countries.</li>" +
+        "<li><b>Honest when unsure.</b> General chatbots sometimes give answers that sound confident but are wrong. SawahKu is told to admit when it isn't sure and to point you to the right officer or official site.</li>" +
+        "<li><b>Photo scan.</b> Take a photo of a leaf or insect, and the AI compares it with local paddy pests and diseases.</li>" +
         "<li><b>Knows your area.</b> A 7-day forecast for your paddy area, with advice on whether to spray and what water level to keep.</li>" +
         "<li><b>Real farmers.</b> In the Community you ask nearby farmers who know the real conditions — something an AI doesn't know.</li>" +
         "<li><b>All in one place.</b> Weather, pest identification, e-books, community and official government sites.</li>" +

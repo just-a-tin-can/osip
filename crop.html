@@ -25,24 +25,49 @@
 
     <section class="section" style="padding-top:22px">
       <div class="container">
-        <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" type="search" id="crop-search" data-i18n-ph="crop.searchPh" aria-label="Cari"></div>
+        <section class="scan card reveal" id="scan" aria-labelledby="scan-title">
+          <div class="scan__head">
+            <span class="scan__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3.5"/></svg></span>
+            <div><h2 id="scan-title" data-i18n="scan.title"></h2><p data-i18n="scan.lead"></p></div>
+          </div>
+          <label class="btn btn--primary btn--block scan__btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+            <span data-i18n="scan.button"></span>
+            <input type="file" id="scan-input" accept="image/*" capture="environment" class="sr-only">
+          </label>
+          <div class="scan__preview" id="scan-preview" hidden><img alt="" src="data:,"><span class="scan__beam" aria-hidden="true"></span></div>
+          <div id="scan-result" aria-live="polite"></div>
+        </section>
 
-        <p class="filter-label" data-i18n="crop.bySymptom"></p>
-        <div class="chips" id="crop-syms"></div>
+        <div class="tabs reveal" id="crop-tabs" role="tablist">
+          <button type="button" role="tab" data-tab="pests" aria-selected="true"><span data-i18n="crop.tabPests"></span></button>
+          <button type="button" role="tab" data-tab="banned" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></svg><span data-i18n="crop.tabBanned"></span></button>
+        </div>
 
-        <p class="filter-label" data-i18n="crop.type"></p>
-        <div class="chips" id="crop-types"></div>
+        <div id="crop-pests">
+          <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input class="input" type="search" id="crop-search" data-i18n-ph="crop.searchPh" aria-label="Cari"></div>
 
-        <p class="note" id="crop-count" style="margin-top:18px"></p>
-        <div class="crop-list" id="crop-list"></div>
+          <p class="filter-label" data-i18n="crop.bySymptom"></p>
+          <div class="chips" id="crop-syms"></div>
 
-        <div class="callout callout--danger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></svg><span data-i18n="crop.mixWarn"></span></div>
-        <div class="callout" style="align-items:center;flex-wrap:wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6l-8-3z"/></svg><span style="flex:1;min-width:200px" data-i18n-html="crop.regCheck"></span>
-          <a class="btn btn--outline btn--sm" href="http://www.portal.doa.gov.my/racunberdaftar/" target="_blank" rel="noopener" data-i18n="crop.regCheckLink"></a></div>
-        <div class="callout callout--warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg><span data-i18n="crop.brandTip"></span></div>
-        <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6l-8-3z"/></svg><span data-i18n="crop.safety"></span></div>
-        <div class="callout" style="align-items:center;flex-wrap:wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span style="flex:1;min-width:200px" data-i18n="crop.alerts"></span>
-          <a class="btn btn--outline btn--sm" href="https://www.doa.gov.my" target="_blank" rel="noopener" data-i18n="crop.alertsLink"></a></div>
+          <p class="filter-label" data-i18n="crop.type"></p>
+          <div class="chips" id="crop-types"></div>
+
+          <p class="note" id="crop-count" style="margin-top:18px"></p>
+          <div class="crop-list" id="crop-list"></div>
+
+          <div class="callout" style="align-items:center;flex-wrap:wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></svg><span style="flex:1;min-width:200px" data-i18n-html="crop.bannedCallout"></span>
+            <a class="btn btn--outline btn--sm" href="#banned" data-i18n="crop.tabBanned"></a></div>
+          <div class="callout" style="align-items:center;flex-wrap:wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6l-8-3z"/></svg><span style="flex:1;min-width:200px" data-i18n-html="crop.regCheck"></span>
+            <a class="btn btn--outline btn--sm" href="http://www.portal.doa.gov.my/racunberdaftar/" target="_blank" rel="noopener" data-i18n="crop.regCheckLink"></a></div>
+          <div class="callout callout--danger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></svg><span data-i18n="crop.mixWarn"></span></div>
+          <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6l-8-3z"/></svg><span data-i18n="crop.safety"></span></div>
+          <div class="callout" style="align-items:center;flex-wrap:wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span style="flex:1;min-width:200px" data-i18n="crop.alerts"></span>
+            <a class="btn btn--outline btn--sm" href="https://www.doa.gov.my" target="_blank" rel="noopener" data-i18n="crop.alertsLink"></a></div>
+          <p class="note" data-i18n-html="crop.sources"></p>
+        </div>
+
+        <div id="crop-banned" hidden></div>
       </div>
     </section>
   </main>
@@ -51,7 +76,10 @@
 
   <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/ai.js"></script>
   <script src="js/cropdata.js"></script>
   <script src="js/crop.js"></script>
+  <script src="js/scan.js"></script>
 </body>
 </html>

@@ -25,25 +25,31 @@
       en: "<p>You're welcome! Wishing you a good harvest this season.</p>"
     },
     {
-      id: "fert", keys: ["baja", "membaja", "urea", "npk", "fertiliser", "fertilizer", "bubuh", "kalium", "potash"],
-      ms: "<p>Jadual baja untuk padi tabur terus (panduan <b>Rice Check</b>, Jabatan Pertanian), <b>setiap hektar</b>:</p><ul>" +
-        "<li><b>Hari 15:</b> baja sebatian NPK 140 kg, TSP 57 kg, MOP 42 kg</li>" +
+      id: "plan", keys: ["jadual", "kalendar", "peringatan", "tarikh tabur", "hari ke", "umur padi", "schedule", "calendar", "reminder", "sowing date", "paddy age", "field plan"],
+      ms: "<p><b>Jadual sawah saya</b> kira semua kerja dari tarikh tabur anda (Rice Check 2022):</p><ul><li>Tarikh dan jumlah baja untuk keluasan sawah anda</li><li>Paras air mengikut umur padi</li><li>Bila memantau siput, rumpai, perosak dan karah tangkai</li><li>Bila keringkan sawah dan bila menuai (hari 95–105)</li></ul><p>Anda juga boleh simpan peringatan dalam kalendar telefon.</p>",
+      en: "<p><b>My field schedule</b> works out every task from your sowing date (Rice Check 2022):</p><ul><li>Fertiliser dates and amounts for your field size</li><li>Water level by paddy age</li><li>When to watch for snails, weeds, pests and neck blast</li><li>When to drain the field and when to harvest (days 95–105)</li></ul><p>You can also save reminders to your phone calendar.</p>",
+      link: { href: "jadual.html", key: "plan.miniT" }
+    },
+    {
+      id: "fert", keys: ["jadual baja", "fertiliser schedule", "baja", "membaja", "urea", "npk", "fertiliser", "fertilizer", "bubuh", "kalium", "potash"],
+      ms: "<p>Jadual baja <b>Rice Check 2022</b> (Jabatan Pertanian) untuk padi tabur terus, varieti 95–105 hari, <b>setiap hektar</b>:</p><ul>" +
+        "<li><b>Hari 15–20:</b> baja sebatian (17.5:15.5:10 atau 17:20:10) 140 kg</li>" +
         "<li><b>Hari 25–30:</b> urea 80 kg</li>" +
-        "<li><b>Hari 45–50:</b> baja sebatian 107 kg, baja tambahan NPK 17:3:25 100 kg, urea 12 kg</li>" +
-        "<li><b>Hari 65–70:</b> baja tambahan 50 kg, urea 20 kg</li></ul>" +
-        "<p>1 hektar ≈ 2.5 ekar ≈ 3.5 relung. Jangan bubuh sebelum hujan lebat. Jika baja subsidi lambat, jangan tunggu terlalu lama — setiap tempoh membaja hanya beberapa hari.</p>",
-      en: "<p>Fertiliser schedule for direct-seeded paddy (<b>Rice Check</b> guideline, Department of Agriculture), <b>per hectare</b>:</p><ul>" +
-        "<li><b>Day 15:</b> compound NPK 140 kg, TSP 57 kg, MOP 42 kg</li>" +
+        "<li><b>Hari 35–45:</b> baja sebatian 100 kg + baja tambahan 17:3:25+2MgO 100 kg</li>" +
+        "<li><b>Hari 70–80:</b> baja tambahan 17:3:25+2MgO 50 kg</li></ul>" +
+        "<p>1 hektar ≈ 2.5 ekar ≈ 3.5 relung. Bubuh ketika sawah berair. Jangan bubuh sebelum hujan lebat.</p><p>Masukkan tarikh tabur dalam <b>Jadual sawah saya</b> untuk dapat tarikh dan jumlah tepat bagi sawah anda.</p>",
+      en: "<p><b>Rice Check 2022</b> fertiliser schedule (Department of Agriculture) for direct-seeded paddy, 95–105-day varieties, <b>per hectare</b>:</p><ul>" +
+        "<li><b>Day 15–20:</b> compound fertiliser (17.5:15.5:10 or 17:20:10) 140 kg</li>" +
         "<li><b>Day 25–30:</b> urea 80 kg</li>" +
-        "<li><b>Day 45–50:</b> compound 107 kg, additional NPK 17:3:25 100 kg, urea 12 kg</li>" +
-        "<li><b>Day 65–70:</b> additional compound 50 kg, urea 20 kg</li></ul>" +
-        "<p>1 hectare ≈ 2.5 acres ≈ 3.5 relung. Don't apply before heavy rain. If subsidy fertiliser is late, don't wait too long — each window is only a few days.</p>",
-      link: { href: "learn.html#masa", key: "learn.readMore" }
+        "<li><b>Day 35–45:</b> compound 100 kg + additional 17:3:25+2MgO 100 kg</li>" +
+        "<li><b>Day 70–80:</b> additional 17:3:25+2MgO 50 kg</li></ul>" +
+        "<p>1 hectare ≈ 2.5 acres ≈ 3.5 relung. Apply when the field has water. Don't apply before heavy rain.</p><p>Enter your sowing date in <b>My field schedule</b> to get the exact dates and amounts for your field.</p>",
+      link: { href: "jadual.html", key: "plan.miniT" }
     },
     {
       id: "water", keys: ["paras air", "air sawah", "pengairan", "mengairi", "water level", "water", "air", "takung", "irrigate", "irrigation", "banjir", "flood", "keringkan", "drain"],
-      ms: "<p>Paras air mengikut umur padi:</p><ul><li><b>Hari 0–7:</b> tanah tepu, tiada air bertakung</li><li><b>Hari 7–14:</b> 3–5 cm</li><li><b>Hari 15–40:</b> 5–7 cm</li><li><b>Hari 40–90:</b> 5–10 cm</li><li><b>10–14 hari sebelum tuai:</b> keringkan sawah</li></ul><p>Semak halaman Cuaca untuk nasihat air setiap hari.</p>",
-      en: "<p>Water level by paddy age:</p><ul><li><b>Day 0–7:</b> saturated soil, no standing water</li><li><b>Day 7–14:</b> 3–5 cm</li><li><b>Day 15–40:</b> 5–7 cm</li><li><b>Day 40–90:</b> 5–10 cm</li><li><b>10–14 days before harvest:</b> drain the field</li></ul><p>Check the Weather page for daily water advice.</p>",
+      ms: "<p>Paras air mengikut umur padi:</p><ul><li><b>Hari 0–7:</b> tanah tepu, tiada air bertakung</li><li><b>Hari 7–10:</b> 3–5 cm</li><li><b>Hari 15–40:</b> 5 cm</li><li><b>Hari 40–90:</b> 5–10 cm</li><li><b>Hari 90 hingga tuai:</b> keringkan sawah (14 hari sebelum tuai)</li></ul><p>Semak halaman Cuaca untuk nasihat air setiap hari.</p>",
+      en: "<p>Water level by paddy age:</p><ul><li><b>Day 0–7:</b> saturated soil, no standing water</li><li><b>Day 7–10:</b> 3–5 cm</li><li><b>Day 15–40:</b> 5 cm</li><li><b>Day 40–90:</b> 5–10 cm</li><li><b>Day 90 to harvest:</b> drain the field (14 days before harvest)</li></ul><p>Check the Weather page for daily water advice.</p>",
       link: { href: "weather.html", key: "nav.weather" }
     },
     {
@@ -77,8 +83,8 @@
     },
     {
       id: "harvest", keys: ["tuai", "menuai", "harvest", "potongan", "hampa", "gred", "deduction", "grade"],
-      ms: "<p>Untuk hasil yang baik dan potongan kilang yang kurang:</p><ul><li>Keringkan sawah <b>10–14 hari sebelum tuai</b></li><li>Tuai bila <b>85–90% bijirin sudah kuning</b></li><li>Jangan tuai terlalu awal (banyak hampa) atau terlalu lambat (bijirin gugur)</li></ul>",
-      en: "<p>For a good harvest and a smaller mill deduction:</p><ul><li>Drain the field <b>10–14 days before harvest</b></li><li>Harvest when <b>85–90% of grains are yellow</b></li><li>Don't harvest too early (many empty grains) or too late (grains drop)</li></ul>",
+      ms: "<p>Untuk hasil yang baik dan potongan kilang yang kurang:</p><ul><li>Keringkan sawah <b>14 hari sebelum tuai</b></li><li>Tuai bila <b>85–90% bijirin sudah kuning</b></li><li>Jangan tuai terlalu awal (banyak hampa) atau terlalu lambat (bijirin gugur)</li></ul>",
+      en: "<p>For a good harvest and a smaller mill deduction:</p><ul><li>Drain the field <b>14 days before harvest</b></li><li>Harvest when <b>85–90% of grains are yellow</b></li><li>Don't harvest too early (many empty grains) or too late (grains drop)</li></ul>",
       link: { href: "learn.html#tuai", key: "learn.readMore" }
     },
     {
@@ -100,6 +106,18 @@
       link: { href: "https://www.doa.gov.my/index.php/edirectory/edirectory_list/1", key: "footer.doa" }
     },
     {
+      id: "ricecheck", keys: ["rice check", "ricecheck", "semakan utama", "standard padi", "sasaran hasil", "10 semakan", "target yield"],
+      ms: "<p><b>Rice Check</b> ialah panduan rasmi Jabatan Pertanian (disemak 2022) dengan <b>10 semakan utama</b>: tanah, petak, penyediaan tanah, penanaman, baja, air, perosak, tuai, lepas tuai dan alam sekitar.</p><ul><li>Sasaran: <b>8 tan/hektar</b> (tabur terus), <b>10 tan/hektar</b> (tanam alih)</li><li>Kadar benih tabur terus basah: <b>120–140 kg/hektar</b></li><li>Petak rata dalam <b>2.5 cm</b></li><li>Pantau sawah setiap <b>7–14 hari</b> dan catat semuanya</li></ul>",
+      en: "<p><b>Rice Check</b> is the Department of Agriculture's official guide (revised 2022) with <b>10 key checks</b>: soil, plots, land preparation, planting, fertiliser, water, pests, harvest, post-harvest and environment.</p><ul><li>Targets: <b>8 t/ha</b> (direct seeding), <b>10 t/ha</b> (transplanting)</li><li>Wet direct seeding rate: <b>120–140 kg/ha</b></li><li>Plots level within <b>2.5 cm</b></li><li>Check the field every <b>7–14 days</b> and record everything</li></ul>",
+      link: { href: "learn.html#ricecheck", key: "learn.readMore" }
+    },
+    {
+      id: "banned", keys: ["haram", "diharamkan", "dilarang", "banned", "illegal", "paraquat", "karbofuran", "carbofuran", "furadan", "fentin", "endosulfan", "racun palsu", "fake pesticide", "baja palsu", "fake fertiliser"],
+      ms: "<p>Racun yang <b>diharamkan</b> di Malaysia termasuk <b>paraquat</b> (2020), <b>karbofuran/Furadan</b> (2023), <b>endosulfan</b>, <b>butaklor</b> dan racun siput <b>fentin asetat</b> (tidak pernah didaftar). Pendaftaran <b>klorpirifos</b> tamat sepenuhnya pada 1 Julai 2026.</p><p>Racun yang sah ada nombor <b>LRMP.R1/</b> pada label. Tiada nombor? Jangan beli.</p>",
+      en: "<p>Pesticides <b>banned</b> in Malaysia include <b>paraquat</b> (2020), <b>carbofuran/Furadan</b> (2023), <b>endosulfan</b>, <b>butachlor</b> and the snail poison <b>fentin acetate</b> (never registered). All <b>chlorpyrifos</b> registrations ended on 1 July 2026.</p><p>Legal pesticides have an <b>LRMP.R1/</b> number on the label. No number? Don't buy it.</p>",
+      link: { href: "crop.html#banned", key: "crop.tabBanned" }
+    },
+    {
       id: "why", keys: ["chatgpt", "chat gpt", "gpt", "gemini", "copilot", "meta ai", "kenapa guna", "kenapa sawahku", "why use", "why sawahku", "beza", "different", "difference"],
       ms: "<p>Chatbot umum pandai menjawab soalan umum, tetapi SawahKu dibuat khas untuk sawah padi di Malaysia:</p><ul><li>Nasihat ikut panduan Jabatan Pertanian dan MARDI, bukan dari negara lain</li><li>Jawapan daripada panduan yang disemak, dengan pautan ke sumber rasmi</li><li>Cuaca untuk kawasan sawah anda, dengan nasihat sembur dan air</li><li>Komuniti pesawah sekitar yang tahu keadaan sebenar</li><li>Bahasa Melayu, huruf besar, boleh bercakap. Percuma.</li></ul>",
       en: "<p>General chatbots are good at general questions, but SawahKu is made for paddy fields in Malaysia:</p><ul><li>Advice follows Department of Agriculture and MARDI guidance, not other countries</li><li>Answers come from checked guides, with links to official sources</li><li>Weather for your paddy area, with spraying and water advice</li><li>A community of nearby farmers who know the real conditions</li><li>Malay language, large text, voice. Free.</li></ul>",
@@ -119,8 +137,8 @@
     },
     {
       id: "ebook", keys: ["ebook", "e-book", "e buku", "ebuku", "e-buku", "buku", "belajar", "baca", "learn", "read", "book", "rekod", "record", "untung", "profit", "asas", "basics", "ipm", "bersepadu"],
-      ms: "<p>SawahKu ada <b>e-buku</b> ringkas yang boleh dibaca atau didengar: asas menanam padi, masa membaja dan menyembur, dron, kawalan perosak bersepadu, air sawah, keselamatan racun, potongan kilang, dan buku rekod ladang.</p>",
-      en: "<p>SawahKu has short <b>e-books</b> you can read or listen to: paddy basics, when to fertilise and spray, drones, integrated pest management, water, pesticide safety, mill deductions, and a farm record book.</p>",
+      ms: "<p>SawahKu ada <b>e-buku</b> ringkas yang boleh dibaca atau didengar: Rice Check, asas menanam padi, masa membaja dan menyembur, panduan racun, dron, kawalan perosak bersepadu, air sawah, keselamatan racun, potongan kilang, dan buku rekod ladang.</p>",
+      en: "<p>SawahKu has short <b>e-books</b> you can read or listen to: Rice Check, paddy basics, when to fertilise and spray, a pesticide guide, drones, integrated pest management, water, pesticide safety, mill deductions, and a farm record book.</p>",
       link: { href: "learn.html", key: "nav.learn" }
     },
     {
@@ -187,8 +205,12 @@
     return {
       html: "<p><b>" + d.name + "</b> (" + d.alt + ")</p><ul>" +
         "<li><b>" + APP.t("crop.signs") + ":</b> " + d.signs + "</li>" +
+        "<li><b>" + APP.t("crop.threshold") + ":</b> " + d.threshold + "</li>" +
+        "<li><b>" + APP.t("crop.chem") + ":</b> " + d.chem.join("; ") + "</li>" +
         "<li><b>" + APP.t("crop.action") + ":</b> " + d.action + "</li>" +
-        "<li><b>" + APP.t("crop.prevent") + ":</b> " + d.prevent + "</li></ul>",
+        "<li><b>" + APP.t("crop.prevent") + ":</b> " + d.prevent + "</li></ul>" +
+        (d.warn ? "<p>⚠️ " + d.warn + "</p>" : "") +
+        "<p><small>" + APP.t("crop.chemNote") + "</small></p>",
       link: { href: "crop.html#" + c.id, key: "ask.more" }
     };
   }
@@ -239,6 +261,38 @@
     els.log.scrollTop = els.log.scrollHeight;
   }
 
+  var history = [];   // conversation sent to the AI (text only)
+
+  function showTyping() {
+    var typing = document.createElement("div");
+    typing.className = "msg msg--bot";
+    typing.innerHTML = '<div class="msg__bubble"><span class="typing"><i></i><i></i><i></i></span></div>';
+    els.log.appendChild(typing);
+    els.log.scrollTop = els.log.scrollHeight;
+    return typing;
+  }
+
+  // Link to the crop page if the AI answer names a pest or disease we have
+  function cropLinkFor(text) {
+    var t = String(text).toLowerCase();
+    for (var i = 0; i < CROP.length; i++) {
+      var c = CROP[i];
+      if (t.indexOf(c.ms.name.toLowerCase()) !== -1 || t.indexOf(c.en.name.toLowerCase()) !== -1) {
+        return { href: "crop.html#" + c.id, key: "ask.more" };
+      }
+    }
+    return null;
+  }
+
+  function offlineAnswer(question, typing, note) {
+    setTimeout(function () {
+      typing.remove();
+      var a = answer(question);
+      a.question = question;
+      addMessage("bot", (note ? '<p class="msg__note">' + note + "</p>" : "") + a.html, a);
+    }, note ? 0 : 600);
+  }
+
   function ask(question) {
     question = String(question || "").trim();
     if (!question) return;
@@ -246,17 +300,20 @@
     addMessage("me", APP.escapeHTML(question));
     els.input.value = "";
     autosize();
-    var typing = document.createElement("div");
-    typing.className = "msg msg--bot";
-    typing.innerHTML = '<div class="msg__bubble"><span class="typing"><i></i><i></i><i></i></span></div>';
-    els.log.appendChild(typing);
-    els.log.scrollTop = els.log.scrollHeight;
-    setTimeout(function () {
+    var typing = showTyping();
+
+    if (!window.SK_AI || !SK_AI.enabled()) { offlineAnswer(question, typing); return; }
+
+    history.push({ role: "user", content: question });
+    SK_AI.chat(history, APP.getLang()).then(function (reply) {
+      if (!reply) throw new Error("empty");
+      history.push({ role: "assistant", content: reply });
       typing.remove();
-      var a = answer(question);
-      a.question = question;
-      addMessage("bot", a.html, a);
-    }, 600);
+      addMessage("bot", SK_AI.format(reply), { question: question, link: cropLinkFor(reply), forum: true, ai: true });
+    }).catch(function () {
+      history.pop();
+      offlineAnswer(question, typing, APP.t("ask.aiDown"));
+    });
   }
 
   function renderQuick() {
@@ -296,6 +353,14 @@
     els.quick = document.getElementById("chat-quick");
     els.mic = document.getElementById("chat-mic");
     els.status = document.getElementById("chat-status");
+
+    // Show whether real AI is connected
+    var flag = document.querySelector(".demo-flag");
+    if (flag && window.SK_AI && SK_AI.enabled()) {
+      flag.setAttribute("data-i18n", "ask.aiOn");
+      flag.textContent = APP.t("ask.aiOn");
+      flag.classList.add("is-ai");
+    }
 
     addMessage("bot", "<p>" + APP.t("ask.hello") + "</p>");
     renderQuick();

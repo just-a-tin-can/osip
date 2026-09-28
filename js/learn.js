@@ -21,7 +21,9 @@
     drop: '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',
     hand: '<path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6l-8-3z"/><path d="M12 8v5M12 16h.01"/>',
     grain: '<path d="M12 21V8"/><path d="M12 8c-1.5-1-2-2.5-2-4 1.5.3 2 1.8 2 4zm0 0c1.5-1 2-2.5 2-4-1.5.3-2 1.8-2 4z"/><path d="M12 13c-2-.5-3-2-3-4 2 .2 3 1.8 3 4zm0 0c2-.5 3-2 3-4-2 .2-3 1.8-3 4zM12 18c-2-.5-3-2-3-4 2 .2 3 1.8 3 4zm0 0c2-.5 3-2 3-4-2 .2-3 1.8-3 4z"/>',
-    note: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>'
+    note: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>',
+    clipboard: '<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="m8.5 11 2 2 4-4M8.5 17h7"/>',
+    flask: '<path d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"/><path d="M7.5 15h9"/>'
   };
 
   function coverIcon(b) {
@@ -87,7 +89,7 @@
       var p = bookProgress(b.id);
       var pct = Math.round(p.read.length / b.chapters.length * 100);
       return '<a class="book" href="' + bookHref(b) + '">' +
-        '<span class="book__cover" style="--c:' + b.color + '">' + coverIcon(b) + "<strong>" + d.title + "</strong></span>" +
+        '<span class="book__cover" style="--c:' + b.color + '">' + (b.featured ? '<span class="book__badge">' + APP.t("learn.featured") + "</span>" : "") + coverIcon(b) + "<strong>" + d.title + "</strong></span>" +
         '<span class="book__body"><span class="book__sub">' + d.sub + "</span>" +
         '<span class="book__meta">' + metaText(b) + "</span>" +
         (p.read.length ? '<span class="book__bar" aria-hidden="true"><span style="width:' + pct + '%"></span></span>' : "") +

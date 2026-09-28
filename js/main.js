@@ -102,6 +102,10 @@
     ask: svg('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.2M12 16.5h.01"/>'),
     crop: svg('<path d="M12 21V10"/><path d="M12 14c-4-.5-6-3-6-7 4 .3 6 3 6 7zM12 11c4-.5 6-3 6-7-4 .3-6 3-6 7z"/><path d="M8 21h8"/>'),
     forum: svg('<path d="M17 8h2a2 2 0 0 1 2 2v9l-3-2h-7a2 2 0 0 1-2-2v-1"/><path d="M15 4H5a2 2 0 0 0-2 2v9l3-2h9a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/>'),
+    flask: svg('<path d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"/><path d="M7.5 15h9"/>'),
+    calendar: svg('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M8 14h2M14 14h2M8 17.5h2"/>'),
+    drop: svg('<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>'),
+    ban: svg('<circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/>'),
     external: svg('<path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>'),
     phone: svg('<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>'),
     agency: svg('<path d="M3 10 12 4l9 6"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/>'),
@@ -137,6 +141,7 @@
   /* ---------- Header, tab bar, footer ---------- */
   var PAGES = [
     { id: "home", href: "index.html", key: "nav.home", icon: "home" },
+    { id: "plan", href: "jadual.html", key: "nav.plan", icon: "calendar" },
     { id: "weather", href: "weather.html", key: "nav.weather", icon: "weather" },
     { id: "ask", href: "ask.html", key: "nav.ask", icon: "ask" },
     { id: "crop", href: "crop.html", key: "nav.crop", icon: "crop" },
@@ -231,6 +236,43 @@
     stop: function () { if (this.canSpeak) window.speechSynthesis.cancel(); }
   };
 
+
+  /* ---------- Gentle animations ----------
+     Cards, tiles and list items fade and slide in as they scroll into
+     view. Everything is shown at once if the visitor prefers less
+     motion or the browser is old. */
+  var REVEAL_SEL = ".card, .tile, .book, .agency, .post, .day, .faq, .crop, .water-stage, .row-link, .banned, .agency-quick, .continue, .why-banner, .callout, .chem, .scan, .tabs, .news";
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var io = (!reduceMotion && "IntersectionObserver" in window) ? new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+    });
+  }, { rootMargin: "0px 0px -6% 0px", threshold: 0.06 }) : null;
+
+  function reveal(root) {
+    if (!io) return;
+    (root || document).querySelectorAll(REVEAL_SEL + ", .reveal").forEach(function (el) {
+      if (el.classList.contains("is-in") || el.hasAttribute("data-revealed") || el.closest(".site-header, .tabbar, .site-footer, .msg")) return;
+      el.setAttribute("data-revealed", "");
+      el.classList.add("reveal");
+      // small stagger for items in the same row/list
+      var i = 0, sib = el;
+      while ((sib = sib.previousElementSibling) && i < 6) i++;
+      el.style.setProperty("--d", (i * 60) + "ms");
+      io.observe(el);
+    });
+  }
+
+  function watchNewContent() {
+    if (!io || !("MutationObserver" in window)) return;
+    var pending = false;
+    new MutationObserver(function () {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(function () { pending = false; reveal(document.querySelector("main") || document); });
+    }).observe(document.querySelector("main") || document.body, { childList: true, subtree: true });
+  }
+
   /* ---------- Public API ---------- */
   window.APP = {
     t: t,
@@ -247,12 +289,15 @@
     timeAgo: timeAgo,
     waShare: waShare,
     icons: ICONS,
-    speech: speech
+    speech: speech,
+    reveal: reveal
   };
 
   document.addEventListener("DOMContentLoaded", function () {
     buildHeader(document.body.getAttribute("data-page"));
     buildFooter();
     setLang(lang);
+    if (io) document.documentElement.classList.add("anim");
+    setTimeout(function () { reveal(); watchNewContent(); }, 0);
   });
 })();

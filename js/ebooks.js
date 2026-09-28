@@ -16,6 +16,183 @@
   window.EBOOKS = [
     /* ---------------------------------------------------------- */
     {
+      id: "ricecheck", color: "#0f6b5c", icon: "clipboard", featured: true,
+      ms: { title: "Rice Check: Standard Padi Malaysia", sub: "10 semakan utama Jabatan Pertanian untuk hasil tinggi" },
+      en: { title: "Rice Check: Malaysia's Paddy Standard", sub: "The Department of Agriculture's 10 key checks for high yields" },
+      chapters: [
+        {
+          ms: ["Apa itu Rice Check?",
+            p("<b>Rice Check</b> ialah panduan rasmi Jabatan Pertanian Malaysia untuk mengurus tanaman padi mengikut sasaran. Ia digunakan sejak <b>2002</b> dan disemak semula pada <b>2022</b>.") +
+            p("Caranya mudah: <b>perhati, ukur dan catat</b> keadaan padi pada setiap peringkat, kemudian bandingkan dengan sasaran Rice Check. Apa yang tidak capai sasaran, itulah yang perlu dibaiki.") +
+            ul(["Sasaran hasil <b>tabur terus: 8 tan sehektar</b>",
+              "Sasaran hasil <b>tanam alih (cedung): 10 tan sehektar</b>",
+              "Purata negara pada 2020 hanya sekitar <b>4.5 tan sehektar</b> — masih banyak ruang untuk naik"]) +
+            tip("Rice Check tidak memerlukan alat mahal. Yang penting ialah buat kerja yang betul pada masa yang betul, dan catat apa yang anda buat.")],
+          en: ["What is Rice Check?",
+            p("<b>Rice Check</b> is the Department of Agriculture Malaysia's official guide for managing a paddy crop to targets. It has been used since <b>2002</b> and was revised in <b>2022</b>.") +
+            p("The method is simple: <b>observe, measure and record</b> the crop at each stage, then compare with the Rice Check targets. Whatever misses the target is what to fix.") +
+            ul(["Yield target for <b>direct seeding: 8 tonnes per hectare</b>",
+              "Yield target for <b>transplanting: 10 tonnes per hectare</b>",
+              "The national average in 2020 was only about <b>4.5 tonnes per hectare</b> — lots of room to improve"]) +
+            tip("Rice Check doesn't need expensive tools. What matters is doing the right job at the right time, and writing down what you did.")]
+        },
+        {
+          ms: ["10 semakan utama",
+            ol(["<b>Penentuan kesesuaian tanah</b> — tanah sesuai untuk padi",
+              "<b>Keadaan petak sawah</b> — batas kukuh, petak rata",
+              "<b>Penyediaan tanah</b> — bajak dan gelek dengan baik",
+              "<b>Penanaman</b> — benih sah yang berkualiti, kadar dan jarak betul",
+              "<b>Pengurusan pembajaan</b> — baja yang betul, kadar tepat, pada waktunya",
+              "<b>Pengurusan air</b> — air cekap untuk kawal rumpai",
+              "<b>Pengurusan perosak bersepadu</b> — pantau dan kawal ikut paras ekonomi",
+              "<b>Pengurusan penuaian</b> — tuai pada masa yang betul",
+              "<b>Pengendalian lepas tuai</b> — jaga kualiti selepas tuai",
+              "<b>Pengurusan alam sekitar</b> — jaga air, tanah dan kesihatan"]) +
+            tip("Bab seterusnya menerangkan sasaran bagi setiap semakan.")],
+          en: ["The 10 key checks",
+            ol(["<b>Soil suitability</b> — soil suited to paddy",
+              "<b>Field plot condition</b> — strong bunds, level plots",
+              "<b>Land preparation</b> — plough and puddle well",
+              "<b>Planting</b> — quality certified seed, right rate and spacing",
+              "<b>Fertiliser management</b> — the right fertiliser, right rate, on time",
+              "<b>Water management</b> — efficient water to control weeds",
+              "<b>Integrated pest management</b> — monitor and act at the economic threshold",
+              "<b>Harvest management</b> — harvest at the right time",
+              "<b>Post-harvest handling</b> — keep quality after harvest",
+              "<b>Environmental management</b> — protect water, soil and health"]) +
+            tip("The next chapters give the targets for each check.")]
+        },
+        {
+          ms: ["Semakan 1–3: Tanah dan petak",
+            ul(["<b>pH tanah 5.5–6.5.</b> Minta Pejabat Pertanian menguji tanah jika hasil selalu rendah.",
+              "<b>Batas selebar 30–45 cm</b> dan kukuh supaya air tidak bocor.",
+              "<b>Petak rata</b> — beza tinggi rendah tidak lebih <b>2.5 cm</b>.",
+              "Bajak dan gelek sehingga tanah lembut dan sekata."]) +
+            tip("Petak yang rata membolehkan air sekata di seluruh petak. Air sekata = rumpai kurang, baja sekata, padi sama rata.")],
+          en: ["Checks 1–3: Soil and plots",
+            ul(["<b>Soil pH 5.5–6.5.</b> Ask the Agriculture Office to test the soil if yields are always low.",
+              "<b>Bunds 30–45 cm wide</b> and strong so water doesn't leak.",
+              "<b>Level plots</b> — high and low spots within <b>2.5 cm</b>.",
+              "Plough and puddle until the soil is soft and even."]) +
+            tip("A level plot keeps water even across the whole field. Even water = fewer weeds, even fertiliser, even crop.")]
+        },
+        {
+          ms: ["Semakan 4: Benih dan penanaman",
+            p("Guna <b>benih sah</b> yang berkualiti. Kadar benih setiap hektar:") +
+            ul(["Tabur terus basah: <b>120–140 kg</b>",
+              "Tabur terus dalam air: <b>150–180 kg</b>",
+              "Cedung mesin: <b>80 kg</b> (jarak 18 × 30 cm)",
+              "Cedung tangan: <b>40 kg</b> (jarak 25 × 25 cm), 3–5 anak benih serumpun"]) +
+            p("Sasaran kepadatan untuk hasil 10 tan sehektar (kira dalam 1 meter persegi):") +
+            ul(["Hari 15: <b>260 anak benih</b>", "Hari 35: <b>500 pokok</b>", "Semasa masak: <b>460 tangkai</b>"])],
+          en: ["Check 4: Seed and planting",
+            p("Use quality <b>certified seed</b>. Seed rate per hectare:") +
+            ul(["Wet direct seeding: <b>120–140 kg</b>",
+              "Direct seeding into water: <b>150–180 kg</b>",
+              "Machine transplanting: <b>80 kg</b> (spacing 18 × 30 cm)",
+              "Hand transplanting: <b>40 kg</b> (spacing 25 × 25 cm), 3–5 seedlings per hill"]) +
+            p("Density targets for a 10-tonne yield (count within 1 square metre):") +
+            ul(["Day 15: <b>260 seedlings</b>", "Day 35: <b>500 plants</b>", "At maturity: <b>460 panicles</b>"])]
+        },
+        {
+          ms: ["Semakan 5: Baja",
+            p("Jadual Rice Check 2022 untuk <b>tabur terus, varieti 95–105 hari</b>, setiap hektar:") +
+            ul(["<b>Hari 15–20:</b> baja sebatian (17.5:15.5:10 atau 17:20:10) 140 kg",
+              "<b>Hari 25–30:</b> urea 80 kg",
+              "<b>Hari 35–45:</b> baja sebatian 100 kg + baja tambahan 17:3:25+2MgO 100 kg",
+              "<b>Hari 70–80:</b> baja tambahan 17:3:25+2MgO 50 kg"]) +
+            ul(["Bubuh ketika sawah <b>berair</b>, dan tutup saliran keluar.",
+              "Guna <b>carta warna daun</b> (aplikasi LCC Padi) untuk tahu sama ada padi perlukan nitrogen tambahan.",
+              "Varieti lebih lama dan padi cedung ada jadual berbeza — tanya Pejabat Pertanian."])],
+          en: ["Check 5: Fertiliser",
+            p("Rice Check 2022 schedule for <b>direct seeding, 95–105-day varieties</b>, per hectare:") +
+            ul(["<b>Day 15–20:</b> compound fertiliser (17.5:15.5:10 or 17:20:10) 140 kg",
+              "<b>Day 25–30:</b> urea 80 kg",
+              "<b>Day 35–45:</b> compound 100 kg + additional 17:3:25+2MgO 100 kg",
+              "<b>Day 70–80:</b> additional 17:3:25+2MgO 50 kg"]) +
+            ul(["Apply when the field <b>has water</b>, and close the outlet.",
+              "Use the <b>leaf colour chart</b> (LCC Padi app) to see if the paddy needs extra nitrogen.",
+              "Longer varieties and transplanted paddy have different schedules — ask the Agriculture Office."])]
+        },
+        {
+          ms: ["Semakan 6: Air",
+            ul(["<b>Hari 0–7:</b> tanah tepu, tiada air bertakung",
+              "<b>Hari 7–10:</b> 3–5 cm",
+              "<b>Hari 15–40:</b> 5 cm",
+              "<b>Hari 40–90:</b> 5–10 cm",
+              "<b>14 hari sebelum tuai:</b> keringkan sawah"]) +
+            p("<b>Cara jimat air (basah-kering berselang):</b> biarkan air turun sehingga 15 cm di bawah permukaan tanah, kemudian naikkan semula ke 5–6 cm. Kekalkan 5 cm semasa padi berbunga (hari 65–70).") +
+            tip("Air yang cukup pada awal musim ialah cara paling murah untuk mengawal rumpai.")],
+          en: ["Check 6: Water",
+            ul(["<b>Day 0–7:</b> saturated soil, no standing water",
+              "<b>Day 7–10:</b> 3–5 cm",
+              "<b>Day 15–40:</b> 5 cm",
+              "<b>Day 40–90:</b> 5–10 cm",
+              "<b>14 days before harvest:</b> drain the field"]) +
+            p("<b>Water-saving option (alternate wetting and drying):</b> let the water drop to 15 cm below the soil surface, then refill to 5–6 cm. Keep 5 cm while the paddy flowers (days 65–70).") +
+            tip("Enough water early in the season is the cheapest way to control weeds.")]
+        },
+        {
+          ms: ["Semakan 7: Perosak, penyakit dan rumpai",
+            p("<b>Pantau sawah setiap 7–14 hari.</b> Sembur hanya bila mencapai paras ekonomi:") +
+            ul(["Tikus: <b>5% kerosakan</b>",
+              "Bena perang: <b>5 dewasa atau 10 nimfa</b> setiap kuadrat",
+              "Ulat pelipat daun: <b>30% daun rosak</b>",
+              "Pengorek batang: <b>1 kelompok telur atau 1 rama-rama</b> setiap meter persegi",
+              "Siput gondang emas: <b>1 siput</b> setiap meter persegi"]) +
+            ul(["Rumpai: racun pra-cambah pada <b>hari 0–7</b>, dan kawalan kimia sebelum <b>hari 40</b> (varieti awal) atau <b>hari 60</b> (varieti lewat)."]) +
+            tip("Maklumat racun yang disyorkan untuk setiap perosak ada di halaman <b>Tanaman</b>.")],
+          en: ["Check 7: Pests, diseases and weeds",
+            p("<b>Check the field every 7–14 days.</b> Spray only when the economic threshold is reached:") +
+            ul(["Rats: <b>5% damage</b>",
+              "Brown planthopper: <b>5 adults or 10 nymphs</b> per quadrat",
+              "Leaf folder: <b>30% of leaves damaged</b>",
+              "Stem borer: <b>1 egg mass or 1 moth</b> per square metre",
+              "Golden apple snail: <b>1 snail</b> per square metre"]) +
+            ul(["Weeds: pre-emergence herbicide at <b>days 0–7</b>, and chemical control before <b>day 40</b> (early varieties) or <b>day 60</b> (late varieties)."]) +
+            tip("The recommended pesticides for each pest are on the <b>Crops</b> page.")]
+        },
+        {
+          ms: ["Semakan 8–10: Tuai, lepas tuai, alam sekitar",
+            ul(["Tuai bila <b>85–90% bijirin</b> dalam tangkai sudah kuning, pada hari yang kering.",
+              "Hantar padi ke kilang atau kompleks pengering <b>secepat mungkin</b>, dan tutup semasa diangkut.",
+              "Bilas botol racun <b>tiga kali</b>, tebuk, dan jangan guna semula.",
+              "Selepas menyembur, jangan lepaskan air sawah ke parit dengan segera — tahan sekurang-kurangnya sehari."]) +
+            tip("Lihat e-buku <i>Kurangkan Potongan Kilang</i> untuk cara menjaga kualiti padi.")],
+          en: ["Checks 8–10: Harvest, post-harvest, environment",
+            ul(["Harvest when <b>85–90% of grains</b> on the panicle are yellow, on a dry day.",
+              "Send the paddy to the mill or drying complex <b>as soon as possible</b>, covered during transport.",
+              "Rinse pesticide bottles <b>three times</b>, puncture them, and never reuse them.",
+              "After spraying, don't release field water into drains straight away — hold it for at least a day."]) +
+            tip("See the e-book <i>Reduce Mill Deductions</i> for ways to keep paddy quality high.")]
+        },
+        {
+          ms: ["Pantau, ukur, catat",
+            p("Rice Check berjaya bila anda <b>mencatat</b>. Untuk setiap musim, tulis:") +
+            ul(["Tarikh tabur, varieti dan kadar benih",
+              "Kiraan anak benih (hari 15), pokok (hari 35) dan tangkai (masak)",
+              "Tarikh, jenis dan jumlah setiap baja",
+              "Paras air setiap minggu",
+              "Perosak yang dijumpai, dan racun yang digunakan",
+              "Hasil (tan sehektar) dan potongan kilang"]) +
+            p("Bandingkan dengan sasaran dan dengan musim lepas. Bincang dengan jiran dan pegawai pertanian — apa yang mereka buat berbeza?") +
+            p('Buku penuh: <a href="https://www.doa.gov.my/doa/resources/aktiviti_sumber/sumber_awam/penerbitan/pakej_teknologi/padi/rice_check_padi_2022.pdf" target="_blank" rel="noopener">Rice Check Padi 2022 (Jabatan Pertanian, PDF)</a>')],
+          en: ["Observe, measure, record",
+            p("Rice Check works when you <b>keep records</b>. Each season, write down:") +
+            ul(["Sowing date, variety and seed rate",
+              "Counts of seedlings (day 15), plants (day 35) and panicles (maturity)",
+              "Date, type and amount of each fertiliser",
+              "Water level each week",
+              "Pests found, and pesticides used",
+              "Yield (tonnes per hectare) and mill deduction"]) +
+            p("Compare with the targets and with last season. Talk with neighbours and agriculture officers — what do they do differently?") +
+            p('Full book: <a href="https://www.doa.gov.my/doa/resources/aktiviti_sumber/sumber_awam/penerbitan/pakej_teknologi/padi/rice_check_padi_2022.pdf" target="_blank" rel="noopener">Rice Check Padi 2022 (Department of Agriculture, PDF)</a>')]
+        }
+      ]
+    },
+
+    /* ---------------------------------------------------------- */
+    {
       id: "asas", color: "#1f5a33", icon: "sprout",
       ms: { title: "Asas Menanam Padi", sub: "Dari menyediakan sawah hingga menuai" },
       en: { title: "Paddy Farming Basics", sub: "From preparing the field to harvest" },
@@ -78,13 +255,13 @@
         },
         {
           ms: ["Menuai",
-            ul(["Keringkan sawah <b>10–14 hari sebelum tuai</b> supaya tanah cukup keras untuk mesin.",
+            ul(["Keringkan sawah <b>14 hari sebelum tuai</b> supaya tanah cukup keras untuk mesin.",
               "Tuai bila <b>85–90% bijirin sudah kuning</b>.",
               "Terlalu awal: banyak bijirin hampa dan hijau. Terlalu lambat: bijirin gugur dan patah.",
               "Hantar padi ke kilang secepat mungkin selepas tuai."]) +
             tip("Lihat e-buku <i>Kurangkan Potongan Kilang</i> untuk cara mendapat harga yang lebih baik.")],
           en: ["Harvest",
-            ul(["Drain the field <b>10–14 days before harvest</b> so the soil is firm enough for the machine.",
+            ul(["Drain the field <b>14 days before harvest</b> so the soil is firm enough for the machine.",
               "Harvest when <b>85–90% of grains are yellow</b>.",
               "Too early: many empty and green grains. Too late: grains fall off and break.",
               "Send the paddy to the mill as soon as possible after harvest."]) +
@@ -115,21 +292,21 @@
         },
         {
           ms: ["Jadual baja (setiap hektar)",
-            p("Panduan <b>Rice Check</b> Jabatan Pertanian untuk padi tabur terus:") +
-            ul(["<b>Hari 15:</b> baja sebatian NPK 140 kg, TSP 57 kg, MOP 42 kg",
+            p("Panduan <b>Rice Check Padi 2022</b> Jabatan Pertanian untuk padi tabur terus, varieti 95–105 hari:") +
+            ul(["<b>Hari 15–20:</b> baja sebatian (17.5:15.5:10 atau 17:20:10) 140 kg",
               "<b>Hari 25–30:</b> urea 80 kg",
-              "<b>Hari 45–50:</b> baja sebatian 107 kg, baja tambahan NPK 17:3:25 100 kg, urea 12 kg",
-              "<b>Hari 65–70:</b> baja tambahan 50 kg, urea 20 kg"]) +
+              "<b>Hari 35–45:</b> baja sebatian 100 kg + baja tambahan 17:3:25+2MgO 100 kg",
+              "<b>Hari 70–80:</b> baja tambahan 17:3:25+2MgO 50 kg"]) +
             p("1 hektar ≈ 2.5 ekar ≈ 3.5 relung. Untuk sawah 1 ekar, bahagikan jumlah di atas dengan 2.5.") +
-            tip("Jumlah sebenar boleh berbeza mengikut tanah dan varieti. Semak dengan Pejabat Pertanian Daerah.")],
+            tip("Varieti lebih lama, atau padi cedung/tanam alih, ada jadual lain. Lihat e-buku <i>Rice Check</i> atau tanya Pejabat Pertanian Daerah.")],
           en: ["Fertiliser schedule (per hectare)",
-            p("The Department of Agriculture's <b>Rice Check</b> guideline for direct-seeded paddy:") +
-            ul(["<b>Day 15:</b> compound NPK 140 kg, TSP 57 kg, MOP 42 kg",
+            p("The Department of Agriculture's <b>Rice Check Padi 2022</b> guideline for direct-seeded paddy, 95–105-day varieties:") +
+            ul(["<b>Day 15–20:</b> compound fertiliser (17.5:15.5:10 or 17:20:10) 140 kg",
               "<b>Day 25–30:</b> urea 80 kg",
-              "<b>Day 45–50:</b> compound 107 kg, additional NPK 17:3:25 100 kg, urea 12 kg",
-              "<b>Day 65–70:</b> additional compound 50 kg, urea 20 kg"]) +
+              "<b>Day 35–45:</b> compound 100 kg + additional 17:3:25+2MgO 100 kg",
+              "<b>Day 70–80:</b> additional 17:3:25+2MgO 50 kg"]) +
             p("1 hectare ≈ 2.5 acres ≈ 3.5 relung. For a 1-acre field, divide the amounts above by 2.5.") +
-            tip("Actual amounts can differ with soil and variety. Check with your District Agriculture Office.")]
+            tip("Longer varieties, or transplanted paddy, have a different schedule. See the <i>Rice Check</i> e-book or ask your District Agriculture Office.")]
         },
         {
           ms: ["Cara membaja dengan betul",
@@ -172,6 +349,157 @@
               "<b>Don't spray</b> in strong wind — the spray drifts to your neighbour's field or into your face.",
               "Follow the <b>pre-harvest interval</b> on the label: stop spraying the number of days before harvest that it states."]) +
             tip("SawahKu's Weather page marks each day as good for spraying, early morning only, or don't spray.")]
+        }
+      ]
+    },
+
+    /* ---------------------------------------------------------- */
+    {
+      id: "racun", color: "#8c2f39", icon: "flask",
+      ms: { title: "Panduan Racun & Bahan Kimia", sub: "Pilih, baca label, sukat dan elak racun haram" },
+      en: { title: "Pesticides & Chemicals Guide", sub: "Choose, read the label, measure and avoid illegal products" },
+      chapters: [
+        {
+          ms: ["Jenis-jenis racun",
+            ul(["<b>Racun serangga (insektisid)</b> — bena perang, pengorek batang, ulat",
+              "<b>Racun kulat (fungisid)</b> — karah, hawar seludang, bintik perang",
+              "<b>Racun rumpai (herbisid)</b> — rumput, rusiga, daun lebar, padi angin",
+              "<b>Racun siput (moluskisid)</b> — siput gondang emas",
+              "<b>Racun tikus (rodentisid)</b> — umpan tikus"]) +
+            p("<b>Penyakit bakteria dan virus tidak boleh diubati dengan racun.</b> Hawar daun bakteria dikawal dengan cara pengurusan. Tungro dikawal dengan mengawal bena hijau yang membawanya.") +
+            tip("Kenal pasti masalah dahulu. Racun serangga tidak membunuh kulat, dan racun kulat tidak membunuh serangga.")],
+          en: ["Types of pesticide",
+            ul(["<b>Insecticides</b> — planthoppers, stem borers, caterpillars",
+              "<b>Fungicides</b> — blast, sheath blight, brown spot",
+              "<b>Herbicides</b> — grasses, sedges, broadleaf weeds, weedy rice",
+              "<b>Molluscicides</b> — golden apple snails",
+              "<b>Rodenticides</b> — rat baits"]) +
+            p("<b>Bacterial and viral diseases can't be cured with pesticide.</b> Bacterial leaf blight is managed with field practices. Tungro is managed by controlling the green leafhopper that spreads it.") +
+            tip("Identify the problem first. Insecticide doesn't kill fungus, and fungicide doesn't kill insects.")]
+        },
+        {
+          ms: ["Cara membaca label",
+            ul(["<b>Bahan aktif dan kepekatannya</b> — inilah \"ubat\" sebenar. Jenama berbeza boleh ada bahan aktif yang sama pada harga berbeza.",
+              "<b>Nombor pendaftaran LRMP.R1/…</b> — tanda racun ini sah di Malaysia. Tiada nombor = jangan beli.",
+              "<b>Tanaman dan perosak</b> yang dibenarkan — pastikan padi disenaraikan.",
+              "<b>Kadar penggunaan</b> — berapa banyak setiap hektar atau setiap tangki.",
+              "<b>Tempoh sebelum tuai</b> — berapa hari mesti berhenti menyembur sebelum menuai.",
+              "<b>Amaran dan pertolongan cemas</b>, serta <b>tarikh luput</b>."]) +
+            tip("Label mesti ada dalam Bahasa Melayu. Racun dengan label bahasa asing sahaja mungkin diseludup.")],
+          en: ["How to read a label",
+            ul(["<b>Active ingredient and its strength</b> — this is the real \"medicine\". Different brands can have the same active ingredient at different prices.",
+              "<b>Registration number LRMP.R1/…</b> — shows the product is legal in Malaysia. No number = don't buy.",
+              "<b>Crops and pests</b> it is approved for — make sure paddy is listed.",
+              "<b>Application rate</b> — how much per hectare or per tank.",
+              "<b>Pre-harvest interval</b> — how many days before harvest you must stop spraying.",
+              "<b>Warnings and first aid</b>, and the <b>expiry date</b>."]) +
+            tip("The label must be in Malay. A product with only a foreign-language label may be smuggled.")]
+        },
+        {
+          ms: ["Jenis formulasi",
+            p("Huruf selepas nama racun menunjukkan bentuknya:") +
+            ul(["<b>EC</b> — cecair yang bercampur dengan air menjadi putih susu",
+              "<b>SC</b> — cecair pekat; goncang dahulu sebelum guna",
+              "<b>SL</b> — cecair larut penuh dalam air",
+              "<b>WP</b> — serbuk; bancuh dahulu dalam sedikit air sebelum masuk tangki",
+              "<b>WG / WDG</b> — butiran yang larut dalam air, kurang berdebu daripada WP",
+              "<b>GR</b> — butiran untuk ditabur terus, tidak dibancuh"]) +
+            tip("Masukkan air separuh tangki dahulu, kemudian racun, kemudian penuhkan air sambil dikacau.")],
+          en: ["Formulation types",
+            p("The letters after the product name show its form:") +
+            ul(["<b>EC</b> — liquid that turns milky white in water",
+              "<b>SC</b> — thick liquid; shake before use",
+              "<b>SL</b> — liquid that dissolves fully in water",
+              "<b>WP</b> — powder; mix in a little water first before adding to the tank",
+              "<b>WG / WDG</b> — granules that dissolve in water, less dusty than WP",
+              "<b>GR</b> — granules spread directly, not mixed"]) +
+            tip("Fill the tank half-way with water first, then add the product, then top up with water while stirring.")]
+        },
+        {
+          ms: ["Kumpulan racun dan rintangan",
+            p("Setiap bahan aktif ada <b>nombor kumpulan</b> (IRAC untuk racun serangga, FRAC untuk racun kulat, HRAC untuk racun rumpai). Bahan aktif dalam kumpulan yang sama bertindak dengan cara yang sama.") +
+            ul(["Jika kumpulan yang sama digunakan berulang kali, perosak menjadi <b>lali (tahan racun)</b>.",
+              "<b>Tukar kumpulan</b> setiap semburan atau setiap musim.",
+              "Contoh di Malaysia: kajian pada 2018 mendapati <b>79% populasi padi angin sudah tahan</b> racun Clearfield, dan sesetengah rumput sambau sudah tahan bispiribak."]) +
+            tip("Di halaman Tanaman, nombor dalam kurungan selepas setiap bahan aktif ialah kumpulannya.")],
+          en: ["Pesticide groups and resistance",
+            p("Each active ingredient has a <b>group number</b> (IRAC for insecticides, FRAC for fungicides, HRAC for herbicides). Actives in the same group work the same way.") +
+            ul(["Using the same group again and again makes pests <b>resistant</b>.",
+              "<b>Switch groups</b> each spray or each season.",
+              "Examples in Malaysia: a 2018 study found <b>79% of weedy rice populations already resistant</b> to the Clearfield herbicide, and some barnyard grass already resists bispyribac."]) +
+            tip("On the Crops page, the number in brackets after each active ingredient is its group.")]
+        },
+        {
+          ms: ["Pilih ikut masalah",
+            ul(["<b>Bena perang:</b> pimetrozin (9B), buprofezin (16), imidakloprid (4A)",
+              "<b>Pengorek batang:</b> klorantraniliprol (28), fipronil (2B), kartap (14)",
+              "<b>Ulat pelipat daun:</b> klorantraniliprol (28)",
+              "<b>Karah:</b> trisiklazol (16.1), isoprotiolan (6), azoksistrobin (11)",
+              "<b>Hawar seludang:</b> heksakonazol (3), azoksistrobin + difenokonazol (11 + 3), pensikuron (20)",
+              "<b>Siput gondang:</b> niklosamida, metaldehid",
+              "<b>Rumpai:</b> pretilaklor (15), sihalofop-butil (1), bensulfuron-metil (2), propanil (5)",
+              "<b>Hawar daun bakteria:</b> tiada racun berkesan"]) +
+            tip("Butiran penuh, paras bertindak dan amaran untuk setiap satu ada di halaman <b>Tanaman</b>.")],
+          en: ["Choose by problem",
+            ul(["<b>Brown planthopper:</b> pymetrozine (9B), buprofezin (16), imidacloprid (4A)",
+              "<b>Stem borer:</b> chlorantraniliprole (28), fipronil (2B), cartap (14)",
+              "<b>Leaf folder:</b> chlorantraniliprole (28)",
+              "<b>Blast:</b> tricyclazole (16.1), isoprothiolane (6), azoxystrobin (11)",
+              "<b>Sheath blight:</b> hexaconazole (3), azoxystrobin + difenoconazole (11 + 3), pencycuron (20)",
+              "<b>Golden apple snail:</b> niclosamide, metaldehyde",
+              "<b>Weeds:</b> pretilachlor (15), cyhalofop-butyl (1), bensulfuron-methyl (2), propanil (5)",
+              "<b>Bacterial leaf blight:</b> no pesticide works"]) +
+            tip("Full details, when to act and warnings for each are on the <b>Crops</b> page.")]
+        },
+        {
+          ms: ["Sukat dengan betul (kalibrasi)",
+            p("Label biasanya memberi kadar <b>setiap hektar</b>. Untuk tahu berapa setiap tangki:") +
+            ol(["Isi tangki pam dengan <b>air sahaja</b>.",
+              "Sembur satu kawasan yang diukur, contohnya <b>10 m × 10 m (100 m²)</b>, dengan langkah dan tekanan biasa.",
+              "Ukur berapa liter air yang digunakan.",
+              "Kira: 1 hektar = 10,000 m², jadi air sehektar = liter tadi × 100.",
+              "Bahagikan air sehektar dengan saiz tangki untuk dapat <b>bilangan tangki sehektar</b>.",
+              "Bahagikan kadar racun sehektar dengan bilangan tangki — itulah <b>sukatan setiap tangki</b>."]) +
+            tip("Lebih banyak racun tidak lebih berkesan. Ia membazir wang, merosakkan padi dan mempercepat rintangan.")],
+          en: ["Measure correctly (calibration)",
+            p("Labels usually give a rate <b>per hectare</b>. To work out how much per tank:") +
+            ol(["Fill the sprayer tank with <b>water only</b>.",
+              "Spray a measured area, e.g. <b>10 m × 10 m (100 m²)</b>, at your normal pace and pressure.",
+              "Measure how many litres of water you used.",
+              "Work out: 1 hectare = 10,000 m², so water per hectare = those litres × 100.",
+              "Divide water per hectare by your tank size to get <b>tanks per hectare</b>.",
+              "Divide the per-hectare rate by the number of tanks — that is the <b>amount per tank</b>."]) +
+            tip("More pesticide is not more effective. It wastes money, harms the paddy and speeds up resistance.")]
+        },
+        {
+          ms: ["Racun haram dan palsu",
+            ul(["<b>Diharamkan</b> tetapi masih dijumpai: paraquat, karbofuran (Furadan), endosulfan, fentin asetat (racun siput).",
+              "Tanda racun haram atau palsu: <b>tiada nombor LRMP.R1/</b>, label bahasa asing sahaja, harga terlalu murah, dijual di tepi jalan atau dalam talian tanpa kedai berlesen.",
+              "Kedai yang menjual racun mesti ada <b>lesen premis</b> daripada Jabatan Pertanian.",
+              "Jumpa racun haram? Maklumkan kepada Pejabat Pertanian Daerah."]) +
+            tip("Senarai penuh racun dan baja yang dilarang ada di halaman <b>Tanaman → Racun & baja dilarang</b>.")],
+          en: ["Illegal and fake pesticides",
+            ul(["<b>Banned</b> but still found: paraquat, carbofuran (Furadan), endosulfan, fentin acetate (snail poison).",
+              "Signs of an illegal or fake product: <b>no LRMP.R1/ number</b>, foreign-language label only, price too cheap, sold at the roadside or online without a licensed shop.",
+              "Shops selling pesticides must have a <b>premises licence</b> from the Department of Agriculture.",
+              "Found an illegal product? Tell your District Agriculture Office."]) +
+            tip("The full list of banned pesticides and fertiliser is on <b>Crops → Banned pesticides & fertiliser</b>.")]
+        },
+        {
+          ms: ["Selamat untuk anda dan alam",
+            ul(["Pakai sarung tangan, pelitup, baju lengan panjang dan but.",
+              "Jangan sembur berdekatan parit, kolam ikan atau rumah.",
+              "Ikut <b>tempoh sebelum tuai</b> pada label.",
+              "Bilas botol kosong tiga kali, tebuk, dan jangan guna semula untuk air atau makanan.",
+              "Keracunan: hubungi <b>999</b> atau <b>Pusat Racun Negara 04-653 6999</b>. Bawa label racun."]) +
+            tip("Lihat juga e-buku <i>Keselamatan Racun Perosak</i>.")],
+          en: ["Safe for you and the environment",
+            ul(["Wear gloves, a mask, long sleeves and boots.",
+              "Don't spray near drains, fish ponds or houses.",
+              "Follow the <b>pre-harvest interval</b> on the label.",
+              "Rinse empty bottles three times, puncture them, and never reuse them for water or food.",
+              "Poisoning: call <b>999</b> or the <b>National Poison Centre 04-653 6999</b>. Bring the label."]) +
+            tip("See also the e-book <i>Pesticide Safety</i>.")]
         }
       ]
     },
@@ -345,17 +673,17 @@
         {
           ms: ["Paras air mengikut umur",
             ul(["<b>Hari 0–7:</b> tanah tepu (lembap), tiada air bertakung",
-              "<b>Hari 7–14:</b> 3–5 cm",
-              "<b>Hari 15–40:</b> 5–7 cm",
+              "<b>Hari 7–10:</b> 3–5 cm",
+              "<b>Hari 15–40:</b> 5 cm",
               "<b>Hari 40–90:</b> 5–10 cm",
-              "<b>10–14 hari sebelum tuai:</b> keringkan sawah"]) +
+              "<b>Hari 90 hingga tuai:</b> keringkan sawah (14 hari sebelum tuai)"]) +
             tip("3 cm lebih kurang setinggi ruas pertama jari. 10 cm lebih kurang selebar tapak tangan.")],
           en: ["Water level by age",
             ul(["<b>Day 0–7:</b> saturated (wet) soil, no standing water",
-              "<b>Day 7–14:</b> 3–5 cm",
-              "<b>Day 15–40:</b> 5–7 cm",
+              "<b>Day 7–10:</b> 3–5 cm",
+              "<b>Day 15–40:</b> 5 cm",
               "<b>Day 40–90:</b> 5–10 cm",
-              "<b>10–14 days before harvest:</b> drain the field"]) +
+              "<b>Day 90 to harvest:</b> drain the field (14 days before harvest)"]) +
             tip("3 cm is about the length of the top joint of your finger. 10 cm is about the width of your palm.")]
         },
         {
@@ -466,12 +794,12 @@
         },
         {
           ms: ["Sebelum menuai",
-            ul(["Keringkan sawah 10–14 hari sebelum tuai.",
+            ul(["Keringkan sawah 14 hari sebelum tuai.",
               "Tuai bila 85–90% bijirin sudah kuning — tidak terlalu awal.",
               "Buang padi angin dan rumpai tinggi sebelum tuai supaya tidak bercampur.",
               "Elakkan menuai sejurus selepas hujan jika boleh."])],
           en: ["Before harvest",
-            ul(["Drain the field 10–14 days before harvest.",
+            ul(["Drain the field 14 days before harvest.",
               "Harvest when 85–90% of grains are yellow — not too early.",
               "Remove weedy rice and tall weeds before harvest so they don't get mixed in.",
               "Avoid harvesting right after rain if you can."])]
