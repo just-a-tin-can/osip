@@ -550,6 +550,9 @@ p { margin: 0 0 1em; }
 .scan__icon { width: 52px; height: 52px; border-radius: 16px; background: var(--gold-500); color: var(--green-900); display: grid; place-items: center; flex-shrink: 0; }
 .scan__icon svg { width: 30px; height: 30px; }
 .scan__btn { cursor: pointer; position: relative; }
+.scan__btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 520px) { .scan__btns { grid-template-columns: 1fr; } }
+.scan__btn:focus-within { outline: 3px solid rgba(60, 140, 63, 0.35); outline-offset: 2px; }
 .scan__preview { position: relative; margin-top: 14px; border-radius: 16px; overflow: hidden; background: #111; }
 .scan__preview img { width: 100%; max-height: 320px; object-fit: contain; display: block; }
 .scan__beam { position: absolute; left: 0; right: 0; top: 0; height: 30%; background: linear-gradient(180deg, rgba(227, 169, 43, 0), rgba(227, 169, 43, 0.45), rgba(227, 169, 43, 0)); opacity: 0; pointer-events: none; }
@@ -675,11 +678,13 @@ p { margin: 0 0 1em; }
 @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
 @keyframes tabpop { 0% { transform: scale(0.7); } 60% { transform: scale(1.12); } 100% { transform: scale(1); } }
 @keyframes flash { 0% { box-shadow: 0 0 0 0 rgba(227, 169, 43, 0.7); } 100% { box-shadow: 0 0 0 14px rgba(227, 169, 43, 0); } }
-.anim .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1); transition-delay: var(--d, 0ms); }
+/* Fade-in speed: change --reveal-time (e.g. 0.2s faster, 0.5s slower) */
+:root { --reveal-time: 0.28s; }
+.anim .reveal { opacity: 0; transform: translateY(10px); transition: opacity var(--reveal-time) ease-out, transform var(--reveal-time) cubic-bezier(0.2, 0.7, 0.2, 1); transition-delay: var(--d, 0ms); }
 .anim .reveal.is-in { opacity: 1; transform: none; }
 .anim .page-hero h1, .anim .home-top h1, .anim #greeting { animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 .anim .page-hero p, .anim .home-top p { animation: rise 0.6s 0.12s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-.anim main { animation: fadein 0.35s ease both; }
+.anim main { animation: fadein 0.15s ease both; }
 @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
 .tile, .book, .agency-quick, .row-link, .crop summary, .continue { transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease; }
 .tile:hover, .book:hover, .agency-quick:hover, .continue:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(20, 59, 34, 0.12); }

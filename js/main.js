@@ -247,7 +247,7 @@
     entries.forEach(function (e) {
       if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
     });
-  }, { rootMargin: "0px 0px -6% 0px", threshold: 0.06 }) : null;
+  }, { rootMargin: "0px 0px 8% 0px", threshold: 0 }) : null;
 
   function reveal(root) {
     if (!io) return;
@@ -257,8 +257,8 @@
       el.classList.add("reveal");
       // small stagger for items in the same row/list
       var i = 0, sib = el;
-      while ((sib = sib.previousElementSibling) && i < 6) i++;
-      el.style.setProperty("--d", (i * 60) + "ms");
+      while ((sib = sib.previousElementSibling) && i < 4) i++;
+      el.style.setProperty("--d", (i * 30) + "ms");
       io.observe(el);
     });
   }

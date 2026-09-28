@@ -74,7 +74,9 @@
     els.preview = document.getElementById("scan-preview");
     els.previewImg = els.preview.querySelector("img");
     els.result = document.getElementById("scan-result");
-    els.input.addEventListener("change", function () { onFile(els.input.files && els.input.files[0]); els.input.value = ""; });
+    [els.input, document.getElementById("scan-gallery")].forEach(function (inp) {
+      if (inp) inp.addEventListener("change", function () { onFile(inp.files && inp.files[0]); inp.value = ""; });
+    });
     els.result.addEventListener("click", function (e) {
       var a = e.target.closest("[data-open]");
       if (!a) return;
