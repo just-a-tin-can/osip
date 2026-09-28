@@ -310,9 +310,9 @@
       history.push({ role: "assistant", content: reply });
       typing.remove();
       addMessage("bot", SK_AI.format(reply), { question: question, link: cropLinkFor(reply), forum: true, ai: true });
-    }).catch(function () {
+    }).catch(function (err) {
       history.pop();
-      offlineAnswer(question, typing, APP.t("ask.aiDown"));
+      offlineAnswer(question, typing, APP.t(err && err.message === "busy" ? "ask.aiBusy" : "ask.aiDown"));
     });
   }
 

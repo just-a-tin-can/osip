@@ -62,9 +62,13 @@
         els.preview.classList.remove("is-scanning");
         renderResult(r);
       });
-    }).catch(function () {
+    }).catch(function (err) {
       els.preview.classList.remove("is-scanning");
-      els.result.innerHTML = '<div class="scan-result"><h3>' + APP.t("scan.error") + "</h3><p>" + APP.t("scan.errorBody") + "</p></div>";
+      var busy = err && err.message === "busy";
+      var offline = !busy && navigator.onLine === false;
+      els.result.innerHTML = '<div class="scan-result"><h3>' + APP.t(busy ? "scan.busy" : "scan.error") + "</h3><p>" +
+        APP.t(busy ? "scan.busyBody" : offline ? "scan.errorBody" : "scan.errorServer") + "</p>" +
+        (!busy && !offline && err && err.message ? '<p class="note">' + APP.escapeHTML(String(err.message).slice(0, 160)) + "</p>" : "") + "</div>";
     });
   }
 
