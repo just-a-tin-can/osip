@@ -30,11 +30,18 @@
             <span class="scan__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3.5"/></svg></span>
             <div><h2 id="scan-title" data-i18n="scan.title"></h2><p data-i18n="scan.lead"></p></div>
           </div>
-          <label class="btn btn--primary btn--block scan__btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
-            <span data-i18n="scan.button"></span>
-            <input type="file" id="scan-input" accept="image/*" capture="environment" class="sr-only">
-          </label>
+          <div class="scan__btns">
+            <label class="btn btn--primary scan__btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+              <span data-i18n="scan.camera"></span>
+              <input type="file" id="scan-input" accept="image/*" capture="environment" class="sr-only">
+            </label>
+            <label class="btn btn--outline scan__btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg>
+              <span data-i18n="scan.gallery"></span>
+              <input type="file" id="scan-gallery" accept="image/*" class="sr-only">
+            </label>
+          </div>
           <div class="scan__preview" id="scan-preview" hidden><img alt="" src="data:,"><span class="scan__beam" aria-hidden="true"></span></div>
           <div id="scan-result" aria-live="polite"></div>
         </section>
