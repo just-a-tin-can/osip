@@ -438,7 +438,11 @@
               "<b>Hawar seludang:</b> heksakonazol (3), azoksistrobin + difenokonazol (11 + 3), pensikuron (20)",
               "<b>Siput gondang:</b> niklosamida, metaldehid",
               "<b>Rumpai:</b> pretilaklor (15), sihalofop-butil (1), bensulfuron-metil (2), propanil (5)",
-              "<b>Hawar daun bakteria:</b> tiada racun berkesan"]) +
+              "<b>Pianggang:</b> imidakloprid (4A), fipronil (2B)",
+              "<b>Bena belakang putih:</b> pimetrozin (9B), buprofezin (16), imidakloprid (4A)",
+              "<b>Bakanae:</b> rawat benih — thiram (M3), karbendazim (1)",
+              "<b>Hawar daun bakteria:</b> kuprum di semaian sahaja; tiada racun berdaftar selepas beranak maksimum",
+              "<b>Tiada racun berdaftar:</b> jalur daun bakteria, reput seludang, bertih (false smut), burung"]) +
             tip("Butiran penuh, paras bertindak dan amaran untuk setiap satu ada di halaman <b>Tanaman</b>.")],
           en: ["Choose by problem",
             ul(["<b>Brown planthopper:</b> pymetrozine (9B), buprofezin (16), imidacloprid (4A)",
@@ -448,7 +452,11 @@
               "<b>Sheath blight:</b> hexaconazole (3), azoxystrobin + difenoconazole (11 + 3), pencycuron (20)",
               "<b>Golden apple snail:</b> niclosamide, metaldehyde",
               "<b>Weeds:</b> pretilachlor (15), cyhalofop-butyl (1), bensulfuron-methyl (2), propanil (5)",
-              "<b>Bacterial leaf blight:</b> no pesticide works"]) +
+              "<b>Rice ear bug:</b> imidacloprid (4A), fipronil (2B)",
+              "<b>White-backed planthopper:</b> pymetrozine (9B), buprofezin (16), imidacloprid (4A)",
+              "<b>Bakanae:</b> seed treatment — thiram (M3), carbendazim (1)",
+              "<b>Bacterial leaf blight:</b> copper in the nursery only; no registered pesticide from maximum tillering",
+              "<b>No registered pesticide:</b> bacterial leaf streak, sheath rot, false smut, birds"]) +
             tip("Full details, when to act and warnings for each are on the <b>Crops</b> page.")]
         },
         {

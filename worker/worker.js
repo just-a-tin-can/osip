@@ -82,11 +82,35 @@ PESTS, DISEASES, WEEDS (active ingredients; IRAC/FRAC/HRAC group):
 - Rice blast (karah): tricyclazole (16.1), isoprothiolane (6), azoxystrobin (11); neck blast spray at booting/heading;
   avoid excess nitrogen; resistant varieties.
 - Sheath blight (hawar seludang): hexaconazole (3), azoxystrobin + difenoconazole (11+3), pencycuron (20); spray the base.
-- Bacterial leaf blight (hawar daun bakteria): NO effective chemical — drain, water ≤10 cm, no extra nitrogen,
-  resistant varieties, destroy infected plants.
+- Bacterial leaf blight (hawar daun bakteria): no registered pesticide from maximum tillering onwards; in the nursery/active
+  tillering Rice Check lists tribasic copper sulphate or copper sulphate pentahydrate. Drain, water ≤10 cm, no extra
+  nitrogen, resistant varieties, destroy infected plants.
 - Tungro: virus, cannot be cured; control green leafhopper with imidacloprid (4A) or buprofezin (16);
   rogue infected plants; tell the District Agriculture Office.
 - Brown spot (bintik perang): usually poor soil — fix fertiliser; azoxystrobin + difenoconazole; hot-water seed treatment 53–54 °C for 10–12 minutes.
+- Rice ear bug (pianggang / kesing, Leptocorisa): grain filling (panicle emergence to milky stage); punctured, spotted,
+  empty grains, bad smell. Rice Check threshold: average 2 adults per quadrat (10 quadrats of 15x15 cm per lot).
+  imidacloprid (4A), fipronil (2B), etofenprox (3A, pyrethroid — only if needed, can cause planthopper resurgence);
+  observe the pre-harvest interval; clear barnyard grass and weeds; synchronous planting.
+- White-backed planthopper (bena belakang putih, Sogatella furcifera): 40–70 days after sowing; white stripe on back;
+  orange-yellow then burnt leaves. Threshold 5 adults or 10 nymphs per quadrat. pymetrozine (9B), buprofezin (16, nymphs),
+  imidacloprid (4A); rotate groups (resistance risk); avoid deltamethrin/cypermethrin (resurgence);
+  no insecticide before day 40 unless threshold reached.
+- Birds (burung pipit / munias, Lonchura): grain filling to harvest;
+  no registered pesticide; scarers, flags, reflective tape, guarding, synchronous planting, netting small plots; never poison bait (may be illegal,
+  kills barn owls and other useful birds).
+- Sheath rot (reput seludang, Sarocladium oryzae): flag-leaf sheath rots, panicle stuck or half-emerged, brown grains;
+  high on the plant (unlike sheath blight). No registered fungicide on paddy in Malaysia (Rice Check 2022); seed treatment,
+  control stem borers, avoid excess N, potash at tillering, destroy stubble.
+- False smut (bertih, Ustilaginoidea virens): some grains become velvety orange then greenish-black balls after heading.
+  No registered fungicide in Malaysia; research: triazole (e.g. propiconazole) before heading — ask DOA first.
+  Moderate N, certified seed, remove infected panicles; balls contain toxins harmful to people and animals.
+- Bakanae (Fusarium fujikuroi): abnormally tall, thin, pale seedlings/plants, roots from upper nodes, die or empty grain.
+  Seed-borne. No registered spray; seed treatment (MARDI research: thiram M3, benomyl/carbendazim 1, propiconazole 3);
+  discard floating seed; MADA hot water 55 °C 5 min after 8–12 h soak; pull out tall pale plants; don't save seed.
+- Bacterial leaf streak (jalur daun bakteria, Xanthomonas oryzae pv. oryzicola): narrow water-soaked, translucent streaks
+  BETWEEN veins, yellow ooze droplets; BLB instead starts at the leaf tip/edge and turns white. No registered pesticide
+  (MARDI research: copper only for severe cases); drain, no extra N, resistant varieties, remove weeds/volunteer rice.
 - Weedy rice (padi angin): Clearfield system imazapic + imazapyr (HRAC 2) only with MR220CL1/MR220CL2, 0–7 days after sowing;
   not more than two seasons in a row (resistance); hand-pull at day 70–80; clean seed and machines.
 - Weeds (rumpai): pretilachlor (15) pre-emergence; cyhalofop-butyl (1) for grasses before 4-leaf stage;
@@ -115,18 +139,31 @@ You look at a photo from a Malaysian paddy farmer and identify the most likely p
 Choose exactly one id from this list:
 snail (golden apple snail or its pink eggs), bph (brown planthopper / hopperburn), borer (stem borer: deadheart or whitehead),
 leaffolder (leaf folder: folded leaves with white streaks), rat (rat damage: stems cut at an angle),
+ricebug (rice ear bug / pianggang: slender green-brown bug on panicles, spotted empty grains),
+wbph (white-backed planthopper: small hopper with white stripe on the back, hopperburn),
+birds (munias / grain-eating birds, pecked panicles),
 blast (blast: diamond/eye-shaped grey-centred spots, neck rot), sheath (sheath blight: grey-green oval patches near water line),
 blb (bacterial leaf blight: yellow-white wavy leaf edges from the tip), tungro (yellow-orange stunted plants),
-brownspot (brown spot: many small oval brown spots), weedyrice (weedy rice: taller rice-like plants, shattering/red grains),
-weeds (grasses, sedges, broadleaf weeds), healthy (healthy paddy), unknown (not paddy, too blurry, or not sure).
+brownspot (brown spot: many small oval brown spots),
+sheathrot (sheath rot: rotting flag-leaf sheath, panicle stuck inside), falsesmut (false smut: orange/green velvety balls on grains),
+bakanae (bakanae: abnormally tall thin pale seedlings or plants),
+bls (bacterial leaf streak: narrow translucent streaks between leaf veins),
+weedyrice (weedy rice: taller rice-like plants, shattering/red grains),
+weeds (grasses, sedges, broadleaf weeds), healthy (healthy paddy),
+other (a paddy problem you can recognise that is NOT in this list, e.g. a nutrient deficiency or another pest or disease —
+put its real name in "name"),
+unknown (not paddy, too blurry, or not sure).
 Reply with ONLY a JSON object, no other text:
 {"id": "<id>", "confidence": "high"|"medium"|"low", "name": "<problem name in the user's language>",
  "signs": "<what you see in the photo, one short sentence in the user's language>",
  "advice": "<one or two short practical next steps in the user's language, using the local guidance; active ingredients only, no brands>"}
-Use "low" confidence unless the signs are clear. Never guess wildly — use "unknown" if unsure.
+Use "low" confidence unless the signs are clear. Use "other" only when you are fairly sure what it is; never guess wildly —
+use "unknown" if unsure. For "other", never recommend banned pesticides and tell the farmer to confirm with the
+District Agriculture Office.
 `;
 
-const VALID_IDS = ["snail", "bph", "borer", "leaffolder", "rat", "blast", "sheath", "blb", "tungro", "brownspot", "weedyrice", "weeds", "healthy", "unknown"];
+const VALID_IDS = ["snail", "bph", "borer", "leaffolder", "rat", "ricebug", "wbph", "birds", "blast", "sheath", "blb", "tungro",
+  "brownspot", "sheathrot", "falsesmut", "bakanae", "bls", "weedyrice", "weeds", "healthy", "other", "unknown"];
 
 /* ---------- Helpers ---------- */
 function corsHeaders(request, env) {
@@ -287,7 +324,8 @@ function parseScan(text) {
   let r = {};
   try { r = m ? JSON.parse(m[0]) : {}; } catch (e) { r = {}; }
   if (!m && String(text || "").trim()) r = { advice: String(text).replace(/[`*#]/g, "").trim() };   // AI answered in plain words
-  const id = VALID_IDS.includes(r.id) ? r.id : "unknown";
+  let id = VALID_IDS.includes(r.id) ? r.id : "unknown";
+  if (id === "other" && !String(r.name || "").trim()) id = "unknown";   // "other" needs a name
   const confidence = ["high", "medium", "low"].includes(r.confidence) ? r.confidence : "low";
   const clip = (s) => String(s || "").slice(0, 400);
   return { id, confidence, name: clip(r.name), signs: clip(r.signs), advice: clip(r.advice) };

@@ -175,6 +175,93 @@ var CROP = [
     }
   },
   {
+    id: "ricebug", type: "pest", emoji: "🪲", sym: ["empty", "spots"],
+    keys: ["pianggang", "kesing", "rice bug", "rice ear bug", "ear bug", "leptocorisa", "walang sangit", "bau busuk", "bijirin berlubang"],
+    photo: Object.assign(commons("Leptocorisa_oratorius-Kadavoor-2016-02-07-001.jpg"), { credit: "Jeevan Jose, Kerala, India", license: "CC BY-SA 4.0" }),
+    ms: {
+      name: "Pianggang (kesing)", alt: "Rice ear bug",
+      caption: "Pianggang dewasa — serangga hijau-perang yang panjang dan kurus",
+      when: "Peringkat pengisian bijirin — dari tangkai keluar hingga bijirin mula keras",
+      signs: "Bijirin ada kesan tusukan dan tompok perang atau hitam, kemudian hampa dan ringan. Tangkai kekal tegak. Sawah berbau busuk.",
+      threshold: "Rice Check 2022: purata <b>2 pianggang dewasa setiap kuadrat</b> (periksa 10 kuadrat 15 × 15 cm setiap lot). Kira pada awal pagi atau lewat petang.",
+      chem: ["<b>Imidakloprid</b> (IRAC 4A)", "<b>Fipronil</b> (IRAC 2B)",
+             "<b>Etofenproks</b> (IRAC 3A) — piretroid, guna hanya jika perlu",
+             "Ikut <b>tempoh sebelum tuai</b> pada label — semburan dibuat dekat dengan musim menuai."],
+      action: "Periksa tangkai pada waktu pagi dari padi berbunga hingga bijirin mula keras. Jika sedikit, tangkap dengan penyauk. Sembur hanya bila mencapai paras ambang ekonomi.",
+      prevent: "Bersihkan rumpai (terutama rumput sambau) di dalam dan sekeliling sawah, termasuk semasa sawah rehat. Tanam dan tuai serentak dengan jiran.",
+      warn: "Piretroid juga membunuh labah-labah dan musuh semula jadi — bena perang boleh naik selepas itu. Jangan sembur jika pianggang belum mencapai paras ambang ekonomi."
+    },
+    en: {
+      name: "Rice ear bug", alt: "Pianggang / kesing",
+      caption: "Adult rice ear bug — a long, slender green-brown insect",
+      when: "Grain filling — from panicle emergence until the grains start to harden",
+      signs: "Grains have puncture marks and brown or black spots, then turn empty and light. Panicles stay upright. The field has a bad smell.",
+      threshold: "Rice Check 2022: an average of <b>2 adult bugs per quadrat</b> (check 10 quadrats of 15 × 15 cm per lot). Count early morning or late afternoon.",
+      chem: ["<b>Imidacloprid</b> (IRAC 4A)", "<b>Fipronil</b> (IRAC 2B)",
+             "<b>Etofenprox</b> (IRAC 3A) — a pyrethroid, only if needed",
+             "Follow the <b>pre-harvest interval</b> on the label — sprays are close to harvest."],
+      action: "Check panicles in the morning from flowering until the grains start to harden. If there are few, catch them with a hand net. Spray only at the economic threshold.",
+      prevent: "Clear weeds (especially barnyard grass) in and around the field, including during the fallow period. Plant and harvest at the same time as neighbours.",
+      warn: "Pyrethroids also kill spiders and other natural enemies — brown planthoppers can flare up afterwards. Don't spray before the threshold is reached."
+    }
+  },
+  {
+    id: "wbph", type: "pest", emoji: "🦗", sym: ["yellow", "dying"],
+    keys: ["bena belakang putih", "belakang putih", "white-backed planthopper", "whitebacked planthopper", "white backed planthopper", "wbph", "sogatella"],
+    photo: Object.assign(commons("202205_Long-winged_white-backed_planthopper.svg"), { credit: "DataBase Center for Life Science (DBCLS)", license: "CC BY 4.0" }),
+    ms: {
+      name: "Bena belakang putih", alt: "White-backed planthopper",
+      caption: "Lukisan bena belakang putih dewasa — ada jalur putih di belakang",
+      when: "Beranak maksimum hingga tangkai keluar (40–70 hari lepas tabur)",
+      signs: "Serangga kecil di pangkal batang, dewasanya ada jalur putih di belakang. Daun menjadi kuning-oren, kemudian perang dan kering seperti terbakar.",
+      threshold: "Rice Check 2022: <b>5 dewasa atau 10 nimfa</b> setiap kuadrat (purata 10 kuadrat setiap lot) — sama seperti bena perang.",
+      chem: ["<b>Pimetrozin</b> (IRAC 9B)", "<b>Buprofezin</b> (IRAC 16) — membunuh nimfa sahaja",
+             "<b>Imidakloprid</b> (IRAC 4A)", "Sembur pada <b>pangkal pokok</b>. Tukar kumpulan setiap semburan supaya bena tidak menjadi lali."],
+      action: "Periksa pangkal pokok setiap minggu dari hari 40. Jangan sembur racun serangga sebelum hari 40 kecuali mencapai paras ambang ekonomi.",
+      prevent: "Bersihkan rumpai. Guna varieti tahan. Jaga musuh semula jadi seperti labah-labah dan serangga pemangsa lain.",
+      warn: "<b>Racun yang salah boleh memburukkan serangan.</b> Piretroid seperti deltametrin dan sipermetrin membuat bena membiak lebih cepat."
+    },
+    en: {
+      name: "White-backed planthopper", alt: "Bena belakang putih",
+      caption: "Drawing of an adult white-backed planthopper — note the white stripe on its back",
+      when: "Maximum tillering to panicle emergence (40–70 days after sowing)",
+      signs: "Small insects at the base of the stems; adults have a white stripe down the back. Leaves turn orange-yellow, then brown and dry as if burnt.",
+      threshold: "Rice Check 2022: <b>5 adults or 10 nymphs</b> per quadrat (average of 10 quadrats per lot) — the same as brown planthopper.",
+      chem: ["<b>Pymetrozine</b> (IRAC 9B)", "<b>Buprofezin</b> (IRAC 16) — kills nymphs only",
+             "<b>Imidacloprid</b> (IRAC 4A)", "Spray the <b>base of the plants</b>. Switch group each spray so the planthoppers don't become resistant."],
+      action: "Check the base of the plants weekly from day 40. Don't spray insecticide before day 40 unless the threshold is reached.",
+      prevent: "Clear weeds. Use resistant varieties. Protect natural enemies such as spiders and other predatory insects.",
+      warn: "<b>The wrong spray can make it worse.</b> Pyrethroids such as deltamethrin and cypermethrin make planthoppers breed faster."
+    }
+  },
+  {
+    id: "birds", type: "pest", emoji: "🐦", sym: ["empty"],
+    keys: ["burung", "pipit", "burung pipit", "ciak", "tempua", "munia", "bird", "birds", "sparrow", "weaver"],
+    photo: Object.assign(commons("The_Scaly-breasted_Munia_knows_exactly_where_the_best_seeds_are.jpg"), { credit: "Shiv's fotografia", license: "CC BY-SA 4.0" }),
+    ms: {
+      name: "Burung pipit", alt: "Munias (grain-eating birds)",
+      caption: "Burung pipit (Lonchura) sedang makan biji-bijian",
+      when: "Dari pengisian bijirin hingga menuai",
+      signs: "Kawanan burung makan tangkai yang sedang masak, selalunya di sawah dekat semak atau hutan. Sebahagian bijirin pada tangkai kosong dengan sisa susu.",
+      threshold: "Tiada paras ambang ekonomi. Mula menjaga sawah bila bijirin mula berisi.",
+      chem: ["<b>Tiada racun berdaftar atau disyorkan untuk burung.</b> Guna cara menakutkan dan menjaga sawah."],
+      action: "Jaga sawah setiap hari semasa bijirin masak. Guna pita berkilat, bendera, orang-orang, layang-layang dan bunyi bising — tukar selalu supaya burung tidak biasa.",
+      prevent: "Tanam dan tuai serentak dengan jiran supaya burung tidak berkumpul di satu sawah. Pasang jaring di atas petak kecil jika berbaloi.",
+      warn: "<b>Jangan letak umpan beracun.</b> Ia boleh menyalahi undang-undang dan juga membunuh burung pungguk jelapang, bangau dan burung lain yang memakan perosak."
+    },
+    en: {
+      name: "Birds (munias)", alt: "Burung pipit",
+      caption: "A munia (Lonchura) feeding on seeds",
+      when: "Grain filling until harvest",
+      signs: "Flocks feed on ripening panicles, often in fields next to scrub or forest. Some grains on a panicle are empty with milky residue.",
+      threshold: "No threshold. Start guarding the field once grains begin to fill.",
+      chem: ["<b>No pesticide is registered or recommended for birds.</b> Use scaring and guarding instead."],
+      action: "Guard the field every day while grains ripen. Use reflective tape, flags, scarecrows, kites and noise — change them often so birds don't get used to them.",
+      prevent: "Plant and harvest at the same time as neighbours so birds don't gather on one field. Net small plots if it is worth the cost.",
+      warn: "<b>Don't put out poison bait.</b> It may be illegal, and it also kills barn owls, egrets and other birds that eat pests."
+    }
+  },
+  {
     id: "blast", type: "disease", emoji: "🍂", sym: ["spots", "empty"],
     keys: ["karah", "blast", "reput leher", "neck rot"],
     photo: Object.assign(commons("Rice_blast_Magnaporthe_grisea.jpg"), { credit: "Yulin Jia, USDA-ARS", license: "Public domain" }),
@@ -242,7 +329,7 @@ var CROP = [
       when: "Selalunya selepas ribut atau banjir",
       signs: "Tepi daun menjadi kuning, kemudian putih-kelabu dari hujung ke bawah, dengan sempadan beralun.",
       threshold: "Tiada — bertindak dengan cara pengurusan.",
-      chem: ["<b>Tiada racun yang berkesan.</b> MADA dan Jabatan Pertanian tidak mengesyorkan sebarang semburan — jangan bazir wang."],
+      chem: ["<b>Tiada racun berdaftar selepas beranak maksimum</b> — jangan bazir wang.", "Di semaian dan semasa beranak aktif, Rice Check 2022 menyenaraikan <b>kuprum sulfat tribasik</b> atau <b>kuprum sulfat pentahidrat</b> (FRAC M1)."],
       action: "Keringkan sawah yang banjir, kekalkan air 10 cm atau kurang, dan jangan tambah nitrogen. Jangan alirkan air dari petak berpenyakit ke petak sihat.",
       prevent: "Guna varieti tahan pada musim hadapan. Musnahkan pokok dan tunggul yang dijangkiti.",
       warn: ""
@@ -253,7 +340,7 @@ var CROP = [
       when: "Often after storms or flooding",
       signs: "Leaf edges turn yellow, then white-grey from the tip down, with wavy borders.",
       threshold: "None — manage it with field practices.",
-      chem: ["<b>No pesticide works.</b> MADA and the Department of Agriculture recommend no spray — don't waste money."],
+      chem: ["<b>No registered pesticide from maximum tillering onwards</b> — don't waste money.", "In the nursery and during active tillering, Rice Check 2022 lists <b>tribasic copper sulphate</b> or <b>copper sulphate pentahydrate</b> (FRAC M1)."],
       action: "Drain flooded fields, keep water at 10 cm or less, and don't add nitrogen. Don't let water flow from sick plots into healthy ones.",
       prevent: "Use resistant varieties next season. Destroy infected plants and stubble.",
       warn: ""
@@ -313,6 +400,124 @@ var CROP = [
       action: "Fix the fertiliser first — brown spot is usually a sign of poor soil. Don't let the field dry out.",
       prevent: "Use balanced fertiliser. Use clean, healthy seed.",
       warn: ""
+    }
+  },
+  {
+    id: "sheathrot", type: "disease", emoji: "🍂", sym: ["empty", "spots"],
+    keys: ["reput seludang", "reput", "sheath rot", "sarocladium", "tangkai tak keluar", "tangkai tersekat"],
+    photo: Object.assign(commons("Sarocladium_oryzae_5390549.jpg"), { credit: "Donald Groth, LSU AgCenter, Bugwood.org", license: "CC BY 3.0 US" }),
+    ms: {
+      name: "Reput seludang", alt: "Sheath rot",
+      caption: "Seludang daun bendera perang dan tangkai berubah warna akibat reput seludang",
+      when: "Beranak maksimum hingga bunting — paling teruk sebelum tangkai keluar",
+      signs: "Tompok perang kemerahan dengan tengah kelabu pada <b>seludang daun paling atas</b>, di sekeliling tangkai muda. Tangkai tersekat dalam seludang atau keluar separuh dan reput; bijirin menjadi perang.",
+      threshold: "Tiada paras ambang ekonomi. Bertindak bila tanda mula kelihatan.",
+      chem: ["<b>Tiada racun berdaftar</b> untuk penyakit ini pada padi (Rice Check 2022).",
+             "Pencegahan: rawat benih dengan racun kulat sebelum tabur, seperti disyorkan Rice Check."],
+      action: "Kawal pengorek batang dan serangga lain — lukanya membolehkan kulat masuk. Musnahkan pokok dan tunggul yang dijangkiti selepas tuai.",
+      prevent: "Guna benih sah yang bersih. Jangan tanam terlalu rapat. Jangan bubuh nitrogen berlebihan; bubuh kalium semasa beranak.",
+      warn: "Berbeza daripada hawar seludang: reput seludang berada <b>di atas</b> dan menghalang tangkai keluar. Penyakit ini dibawa oleh benih dan tunggul ke musim seterusnya."
+    },
+    en: {
+      name: "Sheath rot", alt: "Reput seludang",
+      caption: "Browned flag-leaf sheath and discoloured panicle from sheath rot",
+      when: "Maximum tillering to booting — worst just before the panicle comes out",
+      signs: "Red-brown patches with grey centres on the <b>uppermost leaf sheath</b>, around the young panicle. The panicle gets stuck in the sheath or only half comes out and rots; grains turn brown.",
+      threshold: "No threshold. Act when signs first appear.",
+      chem: ["<b>No registered pesticide</b> for this disease on paddy (Rice Check 2022).",
+             "Prevention: treat seed with a fungicide before sowing, as Rice Check recommends."],
+      action: "Control stem borers and other insects — their wounds let the fungus in. Destroy infected plants and stubble after harvest.",
+      prevent: "Use clean certified seed. Don't plant too densely. Avoid too much nitrogen; apply potassium at tillering.",
+      warn: "Different from sheath blight: sheath rot is <b>high up</b> and stops the panicle coming out. It is carried by seed and stubble into the next season."
+    }
+  },
+  {
+    id: "falsesmut", type: "disease", emoji: "🟠", sym: ["spots", "empty"],
+    keys: ["bertih", "barteh", "false smut", "smut", "bola oren", "bola hijau", "ustilaginoidea"],
+    photo: Object.assign(commons("False_smut_on_rice_in_central_Vietnam.jpg"), { credit: "Crop Trust", license: "CC BY-SA 4.0" }),
+    ms: {
+      name: "Bertih (false smut)", alt: "False smut",
+      caption: "Bebola oren penyakit bertih menggantikan beberapa bijirin pada tangkai",
+      when: "Dijangkiti semasa berbunga; kelihatan selepas tangkai keluar hingga masak",
+      signs: "Beberapa bijirin bertukar menjadi <b>bebola baldu</b> — oren atau kuning pada mulanya, kemudian hijau kehitaman. Biasanya hanya sedikit bijirin setiap tangkai.",
+      threshold: "Tiada. Bila bebola sudah kelihatan, sudah terlambat untuk menyembur.",
+      chem: ["<b>Tiada racun berdaftar</b> untuk penyakit ini pada padi (Rice Check 2022).",
+             "Kajian luar negara: racun kulat triazol (cth. propikonazol) disembur <b>sebelum tangkai keluar</b> boleh mengurangkannya — tanya Pejabat Pertanian dahulu."],
+      action: "Buang dan musnahkan tangkai yang dijangkiti. Jangan simpan bijirin dari tangkai berpenyakit untuk dijadikan benih.",
+      prevent: "Bubuh nitrogen secara sederhana. Guna benih sah. Airi dan keringkan sawah secara berselang; jangan takung air sepanjang masa. Bersihkan sisa tanaman selepas tuai.",
+      warn: "Bebola ini mencemarkan hasil tuaian dan mengandungi toksin yang <b>berbahaya kepada manusia dan haiwan</b>. Ia juga menurunkan gred padi."
+    },
+    en: {
+      name: "False smut", alt: "Bertih",
+      caption: "Orange false smut balls replacing some grains on the panicle",
+      when: "Infects at flowering; visible from panicle emergence to maturity",
+      signs: "Some grains turn into <b>velvety balls</b> — orange or yellow at first, later greenish-black. Usually only a few grains per panicle.",
+      threshold: "None. Once the balls are visible it is too late to spray.",
+      chem: ["<b>No registered pesticide</b> for this disease on paddy (Rice Check 2022).",
+             "Overseas research: a triazole fungicide (e.g. propiconazole) sprayed <b>before the panicles come out</b> can reduce it — ask the Agriculture Office first."],
+      action: "Remove and destroy infected panicles. Don't keep grain from infected panicles as seed.",
+      prevent: "Use moderate nitrogen. Use certified seed. Use alternate wetting and drying instead of constant flooding. Clear crop debris after harvest.",
+      warn: "The balls contaminate the harvest and contain toxins that are <b>harmful to people and animals</b>. They also lower the paddy grade."
+    }
+  },
+  {
+    id: "bakanae", type: "disease", emoji: "🌱", sym: ["yellow", "dying"],
+    keys: ["bakanae", "padi tinggi", "anak benih tinggi", "tinggi pucat", "foolish seedling", "fusarium", "gibberella"],
+    photo: Object.assign(commons("Bakanae_Disease_sporulation_JIRCAS.jpg"), { credit: "JIRCAS Library", license: "CC BY 2.0" }),
+    ms: {
+      name: "Bakanae (padi tinggi pucat)", alt: "Bakanae / foolish seedling",
+      caption: "Kulat bakanae di pangkal pokok padi yang dijangkiti",
+      when: "Semaian hingga beranak aktif; boleh berterusan hingga masak",
+      signs: "Anak padi atau pokok <b>jauh lebih tinggi</b> daripada pokok lain, kurus, dengan daun kuning pucat dan sedikit anak. Akar tumbuh dari buku di atas tanah; ada kulat putih atau merah jambu di pangkal. Pokok mati satu demi satu atau hasilnya hampa.",
+      threshold: "Tiada. Kawalan utama dibuat <b>sebelum tabur</b>, pada benih.",
+      chem: ["<b>Tiada racun semburan berdaftar</b> untuk penyakit ini pada padi (Rice Check 2022).",
+             "Rawat benih sebelum tabur — kajian MARDI: <b>thiram</b> (FRAC M3), <b>benomil</b> atau <b>karbendazim</b> (FRAC 1), <b>propikonazol</b> (FRAC 3). Ikut label.",
+             "Jangan guna benomil atau karbendazim (FRAC 1) setiap musim — kulat boleh menjadi lali."],
+      action: "Cabut dan musnahkan pokok yang tinggi dan pucat sebelum kulatnya merebak. Jangan simpan benih dari sawah yang dijangkiti.",
+      prevent: "Guna benih sah yang bersih. Buang benih yang terapung semasa direndam. MADA (untuk bakanae): rendam benih dalam air sejuk 8–12 jam, kemudian air panas 55 °C selama 5 minit. Guna varieti tahan.",
+      warn: "Bakanae <b>dibawa oleh benih</b>, dan juga merebak melalui air rendaman benih dan angin. Serangan teruk boleh mengurangkan hasil 20% atau lebih."
+    },
+    en: {
+      name: "Bakanae (foolish seedling)", alt: "Bakanae",
+      caption: "Bakanae fungus at the base of an infected rice plant",
+      when: "Nursery to active tillering; can continue to maturity",
+      signs: "Seedlings or plants <b>much taller</b> than the rest, thin, with pale yellow-green leaves and few tillers. Roots grow from nodes above the ground; white or pink fungus at the base. Plants die one by one or give empty grain.",
+      threshold: "None. The main control is done <b>before sowing</b>, on the seed.",
+      chem: ["<b>No registered spray</b> for this disease on paddy (Rice Check 2022).",
+             "Treat seed before sowing — MARDI research: <b>thiram</b> (FRAC M3), <b>benomyl</b> or <b>carbendazim</b> (FRAC 1), <b>propiconazole</b> (FRAC 3). Follow the label.",
+             "Don't use benomyl or carbendazim (FRAC 1) every season — the fungus can become resistant."],
+      action: "Pull out and destroy tall, pale plants before the fungus spreads. Don't keep seed from an infected field.",
+      prevent: "Use clean certified seed. Remove seeds that float when soaked. MADA (for bakanae): soak seed in cold water for 8–12 hours, then in 55 °C hot water for 5 minutes. Use resistant varieties.",
+      warn: "Bakanae is <b>carried in the seed</b>, and also spreads through seed-soaking water and wind. Bad outbreaks can cut yield by 20% or more."
+    }
+  },
+  {
+    id: "bls", type: "disease", emoji: "🍃", sym: ["spots", "yellow"],
+    keys: ["jalur daun bakteria", "jalur daun", "bacterial leaf streak", "leaf streak", "bls", "oryzicola", "jalur berair"],
+    photo: Object.assign(commons("Life_cycle_of_Bacterial_Leaf_Streak.jpg"), { credit: "Donald Groth, LSU AgCenter, Bugwood.org", license: "CC BY 3.0" }),
+    ms: {
+      name: "Jalur daun bakteria", alt: "Bacterial leaf streak",
+      caption: "Jalur sempit berair di antara urat daun akibat jalur daun bakteria",
+      when: "Beranak maksimum hingga bunting",
+      signs: "<b>Jalur sempit berair di antara urat daun</b>, hijau gelap pada mulanya, kemudian perang muda hingga kuning kelabu. Jalur nampak lut sinar bila disuluh cahaya. Dalam cuaca lembap ada titisan kuning kecil pada daun.",
+      threshold: "Tiada paras ambang ekonomi. Urus dengan cara pengurusan sawah.",
+      chem: ["<b>Tiada racun berdaftar</b> untuk penyakit ini pada padi (Rice Check 2022) — jangan bazir wang.",
+             "Kajian MARDI: racun berasaskan kuprum (FRAC M1) — tanya Pejabat Pertanian dahulu."],
+      action: "Keringkan sawah dan semaian yang banjir. Jangan tambah nitrogen. Jangan alirkan air dari petak berpenyakit ke petak sihat.",
+      prevent: "Guna varieti tahan dan benih bersih. Buang rumpai dan padi tumbuh sendiri. Bajak masuk tunggul dan jerami yang dijangkiti.",
+      warn: "Berbeza daripada hawar daun bakteria: hawar daun <b>bermula dari hujung atau tepi daun</b> dan menjadi putih; jalur daun ialah <b>garis sempit di antara urat</b>. Pada awalnya kedua-duanya mirip — tanya pegawai jika tidak pasti."
+    },
+    en: {
+      name: "Bacterial leaf streak", alt: "Jalur daun bakteria",
+      caption: "Narrow water-soaked streaks between the leaf veins from bacterial leaf streak",
+      when: "Maximum tillering to booting",
+      signs: "<b>Narrow, water-soaked streaks between the leaf veins</b>, dark green at first, then light brown to yellow-grey. The streaks look see-through against the light. In humid weather there are small yellow droplets on the leaf.",
+      threshold: "No threshold. Manage it with field practices.",
+      chem: ["<b>No registered pesticide</b> for this disease on paddy (Rice Check 2022) — don't waste money.",
+             "MARDI research: copper-based products (FRAC M1) — ask the Agriculture Office first."],
+      action: "Drain flooded fields and nurseries. Don't add nitrogen. Don't let water flow from sick plots into healthy ones.",
+      prevent: "Use resistant varieties and clean seed. Remove weeds and volunteer rice. Plough in infected stubble and straw.",
+      warn: "Different from bacterial leaf blight: blight <b>starts at the leaf tip or edge</b> and turns white; leaf streak is <b>narrow lines between the veins</b>. Early on they look alike — ask an officer if unsure."
     }
   },
   {

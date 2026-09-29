@@ -31,6 +31,16 @@
         (r.signs ? "<p><b>" + APP.t("scan.seen") + ":</b> " + APP.escapeHTML(r.signs) + "</p>" : "") +
         (r.advice ? "<p><b>" + APP.t("scan.advice") + ":</b> " + APP.escapeHTML(r.advice) + "</p>" : "") +
         '<a class="btn btn--green" href="#' + c.id + '" data-open="' + c.id + '">' + APP.t("scan.more") + " " + APP.icons.next + "</a></div>";
+    } else if (r && r.id === "other" && r.name) {
+      // A problem the AI recognised that is not in the SawahKu list
+      var q = encodeURIComponent(r.name);
+      html = '<div class="scan-result scan-result--other">' +
+        "<small>" + APP.t("scan.likely") + "</small><h3>" + APP.escapeHTML(r.name) + "</h3>" + confidenceLabel(r.confidence) +
+        '<p class="scan-result__flag">' + APP.icons.warn + "<span>" + APP.t("scan.notListed") + "</span></p>" +
+        (r.signs ? "<p><b>" + APP.t("scan.seen") + ":</b> " + APP.escapeHTML(r.signs) + "</p>" : "") +
+        (r.advice ? "<p><b>" + APP.t("scan.advice") + ":</b> " + APP.escapeHTML(r.advice) + "</p>" : "") +
+        '<div class="crop__actions"><a class="btn btn--green btn--sm" href="ask.html?q=' + q + '">' + APP.icons.ask + APP.t("scan.askMore") + "</a>" +
+        '<a class="btn btn--outline btn--sm" href="forum.html?new=1&cat=pest&title=' + q + '">' + APP.icons.forum + APP.t("common.askCommunity") + "</a></div></div>";
     } else if (r && r.id === "healthy") {
       html = '<div class="scan-result scan-result--ok"><h3>' + APP.icons.check + " " + APP.t("scan.healthy") + "</h3>" +
         (r.advice ? "<p>" + APP.escapeHTML(r.advice) + "</p>" : "") + "</div>";
