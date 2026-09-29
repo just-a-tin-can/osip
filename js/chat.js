@@ -247,6 +247,13 @@
   function saveChat() {
     APP.store.setJSON(SAVE_KEY, { t: Date.now(), msgs: saved.slice(-MAX_SAVED), history: history.slice(-10) });
     if (els.clear) els.clear.hidden = !saved.length;
+    markHas();
+  }
+
+  // Phones: hide the suggestion chips once a conversation has started, so answers get more room
+  function markHas() {
+    var chat = els.log && els.log.closest(".chat");
+    if (chat) chat.classList.toggle("has-msgs", saved.length > 0);
   }
 
   function restoreChat() {
@@ -257,6 +264,7 @@
     restoring = false;
     saved = data.msgs.slice(-MAX_SAVED);
     history = Array.isArray(data.history) ? data.history.filter(function (h) { return h && typeof h.content === "string"; }) : [];
+    markHas();
     els.log.scrollTop = els.log.scrollHeight;
   }
 
@@ -267,6 +275,7 @@
     els.log.innerHTML = "";
     addMessage("bot", "<p>" + APP.t("ask.hello") + "</p>", null, true);
     if (els.clear) els.clear.hidden = true;
+    markHas();
     els.input.focus();
   }
 
