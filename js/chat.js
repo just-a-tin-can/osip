@@ -238,7 +238,39 @@
   }
 
   /* ---------- Chat UI ---------- */
-  function addMessage(who, html, extra) {
+  /* ---------- Saved chat (on this phone only) ---------- */
+  var SAVE_KEY = "sk-chat";
+  var MAX_SAVED = 60;       // keep the last 60 bubbles
+  var saved = [];
+  var restoring = false;
+
+  function saveChat() {
+    APP.store.setJSON(SAVE_KEY, { t: Date.now(), msgs: saved.slice(-MAX_SAVED), history: history.slice(-10) });
+    if (els.clear) els.clear.hidden = !saved.length;
+  }
+
+  function restoreChat() {
+    var data = APP.store.getJSON(SAVE_KEY, null);
+    if (!data || !Array.isArray(data.msgs) || !data.msgs.length) return;
+    restoring = true;
+    data.msgs.forEach(function (m) { if (m && (m.who === "me" || m.who === "bot") && typeof m.html === "string") addMessage(m.who, m.html, m.extra); });
+    restoring = false;
+    saved = data.msgs.slice(-MAX_SAVED);
+    history = Array.isArray(data.history) ? data.history.filter(function (h) { return h && typeof h.content === "string"; }) : [];
+    els.log.scrollTop = els.log.scrollHeight;
+  }
+
+  function newChat() {
+    APP.speech.stop();
+    saved = []; history = [];
+    try { localStorage.removeItem(SAVE_KEY); } catch (e) { /* ignore */ }
+    els.log.innerHTML = "";
+    addMessage("bot", "<p>" + APP.t("ask.hello") + "</p>", null, true);
+    if (els.clear) els.clear.hidden = true;
+    els.input.focus();
+  }
+
+  function addMessage(who, html, extra, noSave) {
     var wrap = document.createElement("div");
     wrap.className = "msg msg--" + who;
     wrap.innerHTML = '<div class="msg__bubble">' + html + "</div>";
@@ -259,6 +291,10 @@
     }
     els.log.appendChild(wrap);
     els.log.scrollTop = els.log.scrollHeight;
+    if (!noSave && !restoring) {
+      saved.push({ who: who, html: html, extra: extra ? { question: extra.question || "", link: extra.link || null, forum: !!extra.forum, ai: !!extra.ai } : null });
+      saveChat();
+    }
   }
 
   var history = [];   // conversation sent to the AI (text only)
@@ -362,7 +398,10 @@
       flag.classList.add("is-ai");
     }
 
-    addMessage("bot", "<p>" + APP.t("ask.hello") + "</p>");
+    els.clear = document.getElementById("chat-new");
+    addMessage("bot", "<p>" + APP.t("ask.hello") + "</p>", null, true);
+    restoreChat();
+    if (els.clear) { els.clear.hidden = !saved.length; els.clear.addEventListener("click", newChat); }
     renderQuick();
 
     document.getElementById("chat-form").addEventListener("submit", function (e) { e.preventDefault(); ask(els.input.value); });
