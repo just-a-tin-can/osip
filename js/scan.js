@@ -59,6 +59,31 @@
       '<a class="btn btn--outline btn--sm" href="forum.html?new=1&cat=pest">' + APP.icons.forum + APP.t("scan.offForum") + "</a></div></div>";
   }
 
+  var lastImage = null;
+
+  function showError(err) {
+    els.preview.classList.remove("is-scanning");
+    var code = err && err.message;
+    var busy = code === "busy" || code === "overloaded";
+    var offline = !busy && navigator.onLine === false;
+    els.result.innerHTML = '<div class="scan-result"><h3>' + APP.t(busy ? "scan.busy" : "scan.error") + "</h3><p>" +
+      APP.t(code === "overloaded" ? "scan.overloadBody" : busy ? "scan.busyBody" : offline ? "scan.errorBody" : "scan.errorServer") + "</p>" +
+      (code === "overloaded" && lastImage ? '<button type="button" class="btn btn--green btn--sm" id="scan-retry">' + APP.t("scan.retry") + "</button>" : "") +
+      (!busy && !offline && code ? '<p class="note">' + APP.escapeHTML(String(code).slice(0, 160)) + "</p>" : "") + "</div>";
+    var retry = document.getElementById("scan-retry");
+    if (retry) retry.addEventListener("click", function () { scanImage(lastImage); });
+  }
+
+  function scanImage(dataUrl) {
+    lastImage = dataUrl;
+    els.result.innerHTML = '<div class="scan-loading"><span class="spinner" aria-hidden="true"></span>' + APP.t("scan.working") + "</div>";
+    els.preview.classList.add("is-scanning");
+    return SK_AI.scan(dataUrl, APP.getLang()).then(function (r) {
+      els.preview.classList.remove("is-scanning");
+      renderResult(r);
+    }, showError);
+  }
+
   function onFile(file) {
     if (!file) return;
     APP.speech && APP.speech.stop && APP.speech.stop();
@@ -66,20 +91,8 @@
       els.preview.hidden = false;
       els.previewImg.src = dataUrl;
       if (!SK_AI.enabled()) { notConnected(); return; }
-      els.result.innerHTML = '<div class="scan-loading"><span class="spinner" aria-hidden="true"></span>' + APP.t("scan.working") + "</div>";
-      els.preview.classList.add("is-scanning");
-      return SK_AI.scan(dataUrl, APP.getLang()).then(function (r) {
-        els.preview.classList.remove("is-scanning");
-        renderResult(r);
-      });
-    }).catch(function (err) {
-      els.preview.classList.remove("is-scanning");
-      var busy = err && err.message === "busy";
-      var offline = !busy && navigator.onLine === false;
-      els.result.innerHTML = '<div class="scan-result"><h3>' + APP.t(busy ? "scan.busy" : "scan.error") + "</h3><p>" +
-        APP.t(busy ? "scan.busyBody" : offline ? "scan.errorBody" : "scan.errorServer") + "</p>" +
-        (!busy && !offline && err && err.message ? '<p class="note">' + APP.escapeHTML(String(err.message).slice(0, 160)) + "</p>" : "") + "</div>";
-    });
+      return scanImage(dataUrl);
+    }).catch(showError);
   }
 
   document.addEventListener("DOMContentLoaded", function () {

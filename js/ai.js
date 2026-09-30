@@ -92,6 +92,7 @@
   function noteResult(err) {
     if (!err) { if (!current || current.state !== "on") checkStatus(true); return; }
     if (err.message === "busy") setStatus({ state: "busy", provider: current && current.provider });
+    else if (err.message === "overloaded") setStatus({ state: "overload", provider: current && current.provider });
     else if (err.name === "TypeError" || err.name === "AbortError") setStatus({ state: "off" });
   }
 

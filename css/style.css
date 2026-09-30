@@ -604,7 +604,8 @@ p { margin: 0 0 1em; }
 .ai-status--on { background: var(--green-100); color: var(--green-900); }
 .ai-status--on i { background: #2fa84f; box-shadow: 0 0 0 0 rgba(47, 168, 79, 0.6); animation: live 2s ease-out infinite; }
 .ai-status--busy { background: var(--gold-100); color: #6b4b05; }
-.ai-status--busy i { background: var(--gold-500); }
+.ai-status--busy i, .ai-status--overload i { background: var(--gold-500); }
+.ai-status--overload { background: var(--gold-100); color: #6b4b05; }
 .ai-status--off i { background: var(--red-500); }
 .ai-status--checking i { animation: blink 1s ease-in-out infinite; }
 .scan .ai-status { margin: 0 0 12px; }

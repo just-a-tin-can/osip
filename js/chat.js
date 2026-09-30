@@ -357,7 +357,7 @@
       addMessage("bot", SK_AI.format(reply), { question: question, link: cropLinkFor(reply), forum: true, ai: true });
     }).catch(function (err) {
       history.pop();
-      offlineAnswer(question, typing, APP.t(err && err.message === "busy" ? "ask.aiBusy" : "ask.aiDown"));
+      offlineAnswer(question, typing, APP.t(err && err.message === "busy" ? "ask.aiBusy" : err && err.message === "overloaded" ? "ask.aiOverload" : "ask.aiDown"));
     });
   }
 

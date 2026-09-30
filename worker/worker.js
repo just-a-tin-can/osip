@@ -242,6 +242,13 @@ function isQuotaError(e) {
   return (e && e.status === 429) || /quota|rate limit|resource.?exhausted/i.test(String(e && e.message));
 }
 
+// Google's servers are temporarily overloaded ("high demand", 503). Usually clears in seconds.
+function isOverloaded(e) {
+  return (e && (e.status === 503 || e.status === 500)) || /high demand|overloaded|unavailable|try again later/i.test(String(e && e.message));
+}
+
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
 function geminiConfig(model, maxTokens, opts) {
   const cfg = { maxOutputTokens: maxTokens + 2048 };
   if (/^gemini-[3-9]/.test(model) && !/lite/.test(model)) cfg.thinkingConfig = { thinkingLevel: "low" };
@@ -273,13 +280,27 @@ async function callAI(env, system, messages, maxTokens, image, opts) {
     };
     // The free tier gives the main model only a few requests a day. When they
     // run out, carry on with the "lite" model, which has a much bigger allowance.
+    // If the main model is busy ("high demand"), try the lite model, then wait
+    // a moment and try each once more before giving up.
     const backup = env.AI_FALLBACK_MODEL || GEMINI_FALLBACK;
-    try {
-      return await ask(model);
-    } catch (e) {
-      if (!isQuotaError(e) || !backup || backup === model) throw e;
-      return await ask(backup);
+    const order = backup && backup !== model ? [model, backup] : [model];
+    let lastErr;
+    const usedUp = new Set();   // models whose daily quota has run out — no point retrying
+    for (let round = 0; round < 2; round++) {
+      for (const name of order) {
+        if (usedUp.has(name)) continue;
+        try {
+          return await ask(name);
+        } catch (e) {
+          lastErr = e;
+          if (isQuotaError(e)) usedUp.add(name);
+          else if (!isOverloaded(e)) throw e;
+        }
+      }
+      if (usedUp.size === order.length) break;
+      if (round === 0) await wait(1500);
     }
+    throw lastErr;
   }
 
   if (provider === "claude") {
@@ -373,6 +394,7 @@ export default {
       return json(out, out.error ? 400 : 200, cors);
     } catch (e) {
       if (isQuotaError(e)) return json({ error: "busy", detail: e.message }, 429, cors);
+      if (isOverloaded(e)) return json({ error: "overloaded", detail: e.message }, 503, cors);
       return json({ error: "AI unavailable: " + e.message }, 502, cors);
     }
   },
